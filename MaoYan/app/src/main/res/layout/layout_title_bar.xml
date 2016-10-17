@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="#ff3333">
+    <!--杨宇宁-->
+    <!--标题栏-->
+
+    <ImageView
+        android:id="@+id/title_bar_iv_left"
+        style="@style/ImageViewTitleSide"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/title_bar_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="left"
+        android:text="111"
+        android:maxWidth="224dp" />
+
+    <ImageView
+        android:id="@+id/title_bar_iv_share"
+        style="@style/ImageViewTitleSide"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:id="@+id/title_bar_iv_collect"
+        style="@style/ImageViewTitleSide"
+        android:src="@mipmap/ic_launcher"
+        android:layout_toLeftOf="@+id/title_bar_iv_share" />
+</RelativeLayout>

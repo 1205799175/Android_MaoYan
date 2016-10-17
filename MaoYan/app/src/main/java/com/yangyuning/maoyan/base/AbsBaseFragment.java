@@ -52,6 +52,4 @@ public abstract class AbsBaseFragment extends Fragment {
     protected <T extends View> T byView(int resId) {
         return (T) getView().findViewById(resId);
     }
-
-
 }

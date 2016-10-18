@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.zhy.autolayout.AutoLayoutActivity;
+
 /**
  * Created by dllo on 16/10/17.
  * Activity基类
  * @author 杨宇宁
  */
-public abstract class AbsBaseActivity extends AppCompatActivity{
+public abstract class AbsBaseActivity extends AutoLayoutActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

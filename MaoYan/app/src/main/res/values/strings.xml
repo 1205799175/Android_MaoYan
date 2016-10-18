@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MaoYan</string>
+
+    <!--TabLayout标题-->
+    <string name="movie">电影</string>
+    <string name="cinema">影院</string>
+    <string name="mine">我的</string>
 </resources>

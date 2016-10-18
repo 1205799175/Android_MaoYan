@@ -8,11 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--设置TabLayout标题文字的大小-->
-    <style name="MyTabLayoutTextAppearanceInverse" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
-        <item name="android:textSize">18sp</item>
-    </style>
-
     <!--自定义标题栏-->
     <style name="ImageViewTitleSide">
         <item name="android:layout_width">48dp</item>

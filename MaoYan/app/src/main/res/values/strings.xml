@@ -5,4 +5,6 @@
     <string name="movie">电影</string>
     <string name="cinema">影院</string>
     <string name="mine">我的</string>
+    <string name="dalian">大连</string>
+    <string name="hotShow">热映</string>
 </resources>

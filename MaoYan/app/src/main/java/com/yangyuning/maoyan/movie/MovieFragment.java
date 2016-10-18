@@ -1,9 +1,13 @@
 package com.yangyuning.maoyan.movie;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.yangyuning.maoyan.R;
+import com.yangyuning.maoyan.app.MaoYanApp;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
+import com.yangyuning.maoyan.base.BaseTitleBar;
 
 /**
  * Created by dllo on 16/10/18.
@@ -31,6 +35,5 @@ public class MovieFragment extends AbsBaseFragment {
 
     @Override
     protected void initDatas() {
-
     }
 }

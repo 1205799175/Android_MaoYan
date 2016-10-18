@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
+import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.cinema.CinemaFragment;
 import com.yangyuning.maoyan.mine.MineFragment;
 import com.yangyuning.maoyan.movie.MovieFragment;
@@ -34,20 +35,51 @@ public class MainActivity extends AbsBaseActivity {
 
     @Override
     protected void initDatas() {
-        fragments = new ArrayList<>();
-        vpAdapter = new MainVpAdapter(getSupportFragmentManager());
-        fragments.add(MovieFragment.newInstance());
-        fragments.add(CinemaFragment.newInstance());
-        fragments.add(MineFragment.newInstance());
+        intiFragment();
+        intiAdapter();
+        intiTab();
+        new BaseTitleBar(this).setTextLeft("大连").setTitle("热映");
+    }
+
+    private void intiTab() {
+        for (int i = 0; i < mainTb.getTabCount(); i++) {
+            mainTb.getTabAt(i).setCustomView(vpAdapter.getTabViewByPosition(i));
+        }
+
+        // 默认电影界面被点击
+        mainTb.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition()!=0) {
+                    mainTb.getTabAt(0).getCustomView().findViewById(R.id.item_tb_tv).setSelected(false);
+                    mainTb.getTabAt(0).getCustomView().findViewById(R.id.item_tb_iv).setSelected(false);
+                }
+                mainVp.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+    private void intiAdapter() {
+        vpAdapter = new MainVpAdapter(getSupportFragmentManager(), this);
         vpAdapter.setFragments(fragments);
         mainVp.setAdapter(vpAdapter);
         mainTb.setupWithViewPager(mainVp);
+    }
 
-        mainTb.getTabAt(0).setText(R.string.movie);
-        mainTb.getTabAt(0).setIcon(R.drawable.selector_radio_button_movie);
-        mainTb.getTabAt(1).setText(R.string.cinema);
-        mainTb.getTabAt(1).setIcon(R.drawable.selector_radio_button_cinema);
-        mainTb.getTabAt(2).setText(R.string.mine);
-        mainTb.getTabAt(2).setIcon(R.drawable.selector_radio_button_mine);
+    private void intiFragment() {
+        fragments = new ArrayList<>();
+        fragments.add(MovieFragment.newInstance());
+        fragments.add(CinemaFragment.newInstance());
+        fragments.add(MineFragment.newInstance());
     }
 }

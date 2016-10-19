@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="180px"
+        android:layout_height="272px"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="15px"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="272px"
+        android:layout_marginTop="15px"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="20px"
+        android:paddingTop="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电影名字"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20px"
+                android:text="观众"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="20px"
+                android:text="评分"
+                android:textColor="#d15c42"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="30px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5px"
+                android:background="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="20px"
+                android:text="专业"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="20px"
+                android:text="评分"
+                android:textColor="#d15c42"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5px"
+            android:text="电影简介"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30px"
+            android:text="几家影院播放几次"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="130px"
+        android:layout_height="match_parent"
+        android:layout_marginRight="40px"
+        android:gravity="center_vertical"
+        android:text="票的状态"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

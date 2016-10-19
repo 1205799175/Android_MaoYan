@@ -25,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:textSize="18sp"
         android:textColor="@color/title_bar_tv_color"
         android:gravity="left" />
 

@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yangyuning.maoyan.R;
+import com.yangyuning.maoyan.app.MaoYanApp;
 
 /**
  * Created by dllo on 16/10/17.
@@ -16,17 +17,26 @@ import com.yangyuning.maoyan.R;
  * @author 杨宇宁
  */
 public class BaseTitleBar {
+    RelativeLayout titleBar;
     TextView title_bar_left_tv;
     ImageView title_bar_left;
     TextView title_bar_title;
     ImageView title_bar_share;
     ImageView title_bar_collect;
     public BaseTitleBar(AppCompatActivity context) {
+        titleBar = (RelativeLayout) context.findViewById(R.id.title_bar);
         title_bar_left_tv = (TextView) context.findViewById(R.id.title_bar_tv_left);   //左边文字
         title_bar_left = (ImageView) context.findViewById(R.id.title_bar_iv_left);     //左边图片
         title_bar_title = (TextView) context.findViewById(R.id.title_bar_tv);      //中间文字
         title_bar_share = (ImageView) context.findViewById(R.id.title_bar_iv_share);   //右边分享
         title_bar_collect = (ImageView) context.findViewById(R.id.title_bar_iv_collect);   //右边收藏
+    }
+
+    public BaseTitleBar isShowTitleBar(boolean isShow){
+        if (isShow == true){
+            titleBar.setVisibility(View.GONE);
+        }
+        return this;
     }
 
     /**

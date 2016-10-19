@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 /**
  * Created by dllo on 16/10/17.
  * Fragment的基类
- *
  * @author 韩朝
  */
 public abstract class AbsBaseFragment extends Fragment {
@@ -22,7 +21,6 @@ public abstract class AbsBaseFragment extends Fragment {
         super.onAttach(context);
         this.context = context;
     }
-
 
     @Nullable
     @Override

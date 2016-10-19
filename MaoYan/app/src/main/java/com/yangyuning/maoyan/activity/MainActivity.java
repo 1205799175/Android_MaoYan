@@ -38,7 +38,6 @@ public class MainActivity extends AbsBaseActivity {
         intiFragment();
         intiAdapter();
         intiTab();
-        new BaseTitleBar(this).setTextLeft("大连").setTitle("热映");
     }
 
     private void intiTab() {

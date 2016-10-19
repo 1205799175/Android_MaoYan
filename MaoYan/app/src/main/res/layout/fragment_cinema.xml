@@ -5,11 +5,12 @@
     android:orientation="vertical">
     <!--影院-->
 
+    <include layout="@layout/layout_title_bar"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:text="影院"/>
-
 
 </LinearLayout>

@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efe9eb"
+    android:background="#e8d0cfd2"
     android:orientation="vertical">
 
     <LinearLayout
@@ -370,7 +370,7 @@
             android:layout_height="40px"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:paddingLeft="550px"
+            android:paddingLeft="630px"
             android:src="@mipmap/gotoload" />
 
     </LinearLayout>
@@ -396,7 +396,7 @@
             android:layout_height="40px"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:paddingLeft="550px"
+            android:paddingLeft="630px"
             android:src="@mipmap/gotoload" />
 
     </LinearLayout>

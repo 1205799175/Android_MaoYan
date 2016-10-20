@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
+import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.movie.zxing.encoding.EncodingHandler;
 
 /**
@@ -20,6 +21,7 @@ public class CreateQRCodeActivity extends AbsBaseActivity{
     private EditText qrCodeEt;
     private ImageView qrCodeIv;
     private Button qrCodeBtn;
+    private ImageView backIv;
 
     @Override
     protected int setLayout() {
@@ -31,11 +33,13 @@ public class CreateQRCodeActivity extends AbsBaseActivity{
         qrCodeBtn = byView(R.id.create_qr_code_btn);
         qrCodeEt = byView(R.id.create_qr_code_et);
         qrCodeIv = byView(R.id.create_qr_code_iv);
+        backIv = byView(R.id.title_bar_iv_left);
     }
 
     @Override
     protected void initDatas() {
         initListener();
+        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back);
     }
 
     private void initListener() {
@@ -58,6 +62,13 @@ public class CreateQRCodeActivity extends AbsBaseActivity{
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
+            }
+        });
+
+        backIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateQRCodeActivity.this.finish();
             }
         });
     }

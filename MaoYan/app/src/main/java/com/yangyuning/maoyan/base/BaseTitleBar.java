@@ -53,6 +53,7 @@ public class BaseTitleBar {
     public BaseTitleBar setImageLsftRes(int res){
         title_bar_left.setVisibility(View.VISIBLE);
         title_bar_left.setImageResource(res);
+        title_bar_left_tv.setVisibility(View.GONE);
         return this;
     }
 

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yangyuning.maoyan">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -23,16 +23,20 @@
             </intent-filter>
         </activity>
 
-        <!--二维码详情-->
-        <activity android:name=".movie.qrcode.QRCodeActivity"/>
-        <activity android:name=".movie.zxing.activity.CaptureActivity"/>
-        <activity android:name=".movie.qrcode.CreateQRCodeActivity"/>
+        <!-- 二维码详情 -->
+        <activity android:name=".movie.qrcode.QRCodeActivity" />
+        <activity android:name=".movie.zxing.activity.CaptureActivity" />
+        <activity android:name=".movie.qrcode.CreateQRCodeActivity" />
+        <!--电影 地区详情-->
+        <activity android:name=".movie.area.AreaActivity"></activity>
+
         <meta-data
             android:name="design_width"
-            android:value="768"/>
+            android:value="768" />
         <meta-data
             android:name="design_height"
-            android:value="1280"/>
+            android:value="1280" />
+
     </application>
 
 </manifest>

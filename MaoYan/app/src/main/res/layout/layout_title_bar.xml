@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:drawablePadding="10px"
-        android:textColor="@color/title_bar_tv_color"
-        android:drawableRight="@mipmap/title_bar_drop"/>
+        android:drawableRight="@mipmap/title_bar_drop"
+        android:textColor="@color/title_bar_tv_color" />
 
     <ImageView
         android:id="@+id/title_bar_iv_left"

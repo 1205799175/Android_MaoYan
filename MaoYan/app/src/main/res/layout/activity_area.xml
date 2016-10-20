@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yangyuning.maoyan.movie.area.AreaActivity">
+
+    <include
+        android:id="@+id/area_title_bar"
+        layout="@layout/layout_title_bar"/>
+
+    <EditText
+        android:id="@+id/area_search_bar"
+        android:layout_below="@+id/area_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/area_search"/>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_below="@+id/area_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:background="#70000000"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:visibility="invisible" />
+
+    <com.yangyuning.maoyan.movie.area.SideBar
+        android:id="@+id/sideBar"
+        android:layout_below="@+id/area_search_bar"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

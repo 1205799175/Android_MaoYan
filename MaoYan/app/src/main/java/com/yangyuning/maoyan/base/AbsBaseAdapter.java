@@ -16,7 +16,7 @@ import java.util.List;
  */
 public abstract class AbsBaseAdapter<D, VH extends AbsBaseAdapter.BaseHolder> extends BaseAdapter {
     protected Context context;
-    private List<D> datas;
+    protected List<D> datas;
 
     public AbsBaseAdapter(Context context) {
         this.context = context;
@@ -36,7 +36,7 @@ public abstract class AbsBaseAdapter<D, VH extends AbsBaseAdapter.BaseHolder> ex
     }
 
     @Override
-    public Object getItem(int position) {
+    public D getItem(int position) {
         return datas == null ? null : datas.get(position);
     }
 
@@ -55,7 +55,7 @@ public abstract class AbsBaseAdapter<D, VH extends AbsBaseAdapter.BaseHolder> ex
         } else {
             vh = (VH) convertView.getTag();
         }
-        D itemData = (D) getItem(position);
+        D itemData = getItem(position);
         onBindViewHolder(vh, itemData, position);
         return convertView;
     }

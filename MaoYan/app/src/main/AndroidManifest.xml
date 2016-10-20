@@ -40,6 +40,8 @@
         <activity android:name=".movie.qrcode.QRCodeActivity" />
         <activity android:name=".movie.zxing.activity.CaptureActivity" />
         <activity android:name=".movie.qrcode.CreateQRCodeActivity" />
+        <!--电影 地区详情-->
+        <activity android:name=".movie.area.AreaActivity"></activity>
 
         <meta-data
             android:name="design_width"
@@ -49,6 +51,7 @@
             android:value="1280" />
         <!--地图-->
         <activity android:name=".cinema.map.MapActivity"/>
+
     </application>
 
 </manifest>

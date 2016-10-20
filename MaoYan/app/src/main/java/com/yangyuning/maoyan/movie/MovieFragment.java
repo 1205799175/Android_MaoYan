@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
+import com.yangyuning.maoyan.movie.area.AreaActivity;
 import com.yangyuning.maoyan.movie.qrcode.QRCodeActivity;
 import com.yangyuning.maoyan.movie.zxing.activity.CaptureActivity;
 
@@ -58,11 +59,19 @@ public class MovieFragment extends AbsBaseFragment {
     }
 
     private void initListener() {
+        //点击二维码
         qRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent3 = new Intent(context, CaptureActivity.class);
                 startActivityForResult(intent3, PHOTO_PIC);
+            }
+        });
+        //点击选择地区
+        areatTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, AreaActivity.class));
             }
         });
     }

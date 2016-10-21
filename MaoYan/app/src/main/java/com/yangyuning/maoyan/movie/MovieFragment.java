@@ -38,6 +38,7 @@ public class MovieFragment extends AbsBaseFragment implements RefreshListView.On
             switch (msg.what) {
                 case REFRESH_COMPLETE:
                     movieListview.setOnRefreshComplete();
+                    movieAdapter.setDatas(date);
                     movieAdapter.notifyDataSetChanged();
                     movieListview.setSelection(0);
                     break;

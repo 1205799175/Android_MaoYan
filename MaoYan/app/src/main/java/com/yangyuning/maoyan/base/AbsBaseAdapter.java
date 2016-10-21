@@ -23,10 +23,7 @@ public abstract class AbsBaseAdapter<D, VH extends AbsBaseAdapter.BaseHolder> ex
     }
 
     public void setDatas(List<D> newList) {
-        if (datas == null){
-            datas = new ArrayList<>();
-        }
-        datas.addAll(newList);
+        datas = newList;
         notifyDataSetChanged();
     }
 

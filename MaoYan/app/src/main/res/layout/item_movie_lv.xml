@@ -22,59 +22,12 @@
         android:paddingTop="30px">
 
         <TextView
+            android:id="@+id/movie_film_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="电影名字"
             android:textSize="25sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20px"
-                android:text="观众"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10px"
-                android:layout_marginTop="20px"
-                android:text="评分"
-                android:textColor="#d15c42"
-                android:textSize="15sp" />
-
-            <View
-                android:layout_width="1px"
-                android:layout_height="30px"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5px"
-                android:background="#000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10px"
-                android:layout_marginTop="20px"
-                android:text="专业"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10px"
-                android:layout_marginTop="20px"
-                android:text="评分"
-                android:textColor="#d15c42"
-                android:textSize="15sp" />
-
-
-        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"

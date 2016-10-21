@@ -5,6 +5,9 @@
     android:orientation="vertical">
 
     <!--生成二维码的布局-->
+
+    <include layout="@layout/layout_title_bar"/>
+
     <EditText
         android:id="@+id/create_qr_code_et"
         android:layout_width="match_parent"

@@ -105,6 +105,7 @@ public class CaptureActivity extends Activity implements Callback {
 							case R.id.menu_create:
 								//跳转到生成二维码的activity
 								startActivity(new Intent(CaptureActivity.this, CreateQRCodeActivity.class));
+								CaptureActivity.this.finish();
 								break;
 						}
 						return true;

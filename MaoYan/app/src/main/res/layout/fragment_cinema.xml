@@ -6,11 +6,15 @@
     <!--影院-->
 
     <include layout="@layout/layout_title_bar"/>
-
     <TextView
+        android:id="@+id/map_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="影院"/>
+        android:text="地图显示"/>
+
+    <ListView
+        android:id="@+id/cinema_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

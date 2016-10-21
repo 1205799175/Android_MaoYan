@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yangyuning.maoyan">
+    <!--允许程序设置内置sd卡的写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序获取网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -16,6 +26,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="eb2b3320e3128c221ff26b82d5c8fca6" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +41,8 @@
         <activity android:name=".movie.qrcode.QRCodeActivity" />
         <activity android:name=".movie.zxing.activity.CaptureActivity" />
         <activity android:name=".movie.qrcode.CreateQRCodeActivity" />
+        <!--电影 地区详情-->
+        <activity android:name=".movie.area.AreaActivity"></activity>
 
         <meta-data
             android:name="design_width"
@@ -35,6 +50,9 @@
         <meta-data
             android:name="design_height"
             android:value="1280" />
+        <!--地图-->
+        <activity android:name=".cinema.map.MapActivity"/>
+
     </application>
 
 </manifest>

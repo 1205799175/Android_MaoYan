@@ -3,13 +3,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e8d0cfd2"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200px"
-        android:background="#de1313"
+        android:background="#fd392e"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -17,7 +16,7 @@
             android:layout_height="120px"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="40px"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/login_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,7 +24,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="40px"
             android:text="立即登录"
-            android:textSize="20sp" />
+            android:textSize="18sp"
+            android:textColor="#fff"/>
 
         <ImageView
             android:layout_width="0px"
@@ -53,7 +53,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/myheard"
+                android:layout_marginTop="15px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -61,7 +62,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="想看"
-                android:textColor="#000" />
+                android:textColor="#022"
+                />
 
         </LinearLayout>
         <View
@@ -79,7 +81,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/myeye"
+                android:layout_marginTop="15px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -87,7 +90,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="看过"
-                android:textColor="#000" />
+                android:textColor="#022"
+                />
 
         </LinearLayout>
         <View
@@ -105,7 +109,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/mymovietalk"
+                android:layout_marginTop="15px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -113,7 +118,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="影评"
-                android:textColor="#000" />
+                android:textColor="#022" />
 
         </LinearLayout>
         <View
@@ -131,7 +136,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/mytopic"
+                android:layout_marginTop="15px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -139,7 +145,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="话题"
-                android:textColor="#000" />
+                android:textColor="#022" />
 
         </LinearLayout>
 
@@ -159,7 +165,7 @@
             android:layout_marginLeft="20px"
             android:text="我的订单"
             android:textColor="#000"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="0px"
@@ -194,7 +200,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/nopay"
+                android:layout_marginTop="10px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -202,7 +209,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="未消费"
-                android:textColor="#000" />
+                android:textColor="#022" />
 
         </LinearLayout>
 
@@ -215,7 +222,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/willpay"
+                android:layout_marginTop="10px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -223,7 +231,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="待付款"
-                android:textColor="#000" />
+                android:textColor="#022" />
 
         </LinearLayout>
 
@@ -236,7 +244,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/willtalk"
+                android:layout_marginTop="10px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -244,7 +253,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="待评价"
-                android:textColor="#000" />
+                android:textColor="#022" />
 
         </LinearLayout>
 
@@ -257,7 +266,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60px"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/moneyback"
+                android:layout_marginTop="10px"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -265,7 +275,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="退款"
-                android:textColor="#000" />
+                android:textColor="#022" />
 
         </LinearLayout>
 
@@ -284,8 +294,8 @@
             android:layout_marginLeft="20px"
             android:gravity="center_vertical"
             android:text="我的收藏"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            android:textColor="#022"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="0px"
@@ -310,8 +320,8 @@
             android:layout_marginLeft="20px"
             android:gravity="center_vertical"
             android:text="会员中心"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            android:textColor="#022"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="0px"
@@ -336,8 +346,8 @@
             android:layout_marginLeft="20px"
             android:gravity="center_vertical"
             android:text="我的钱包"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            android:textColor="#022"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="0px"
@@ -362,8 +372,8 @@
             android:layout_marginLeft="20px"
             android:gravity="center_vertical"
             android:text="余额"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            android:textColor="#022"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="0px"
@@ -388,8 +398,8 @@
             android:layout_marginLeft="20px"
             android:gravity="center_vertical"
             android:text="设置"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            android:textColor="#022"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="0px"

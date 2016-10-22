@@ -1,98 +1,177 @@
 package com.yangyuning.maoyan.movie.area;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.yangyuning.maoyan.R;
+import com.yangyuning.maoyan.base.AbsBaseActivity;
+import com.yangyuning.maoyan.mode.bean.AreaBean;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.List;
 
-public class AreaActivity extends AppCompatActivity {
+/**
+ * 城市Activity
+ * @author 杨宇宁
+ */
+public class AreaActivity extends AbsBaseActivity {
+
+    private ListView sortListView;
     private SideBar sideBar;
-    private TextView textView;
-    private ListView listView;
+    private TextView dialog;
+    private SortAdapter adapter;
+    private ClearEditText mClearEditText;
 
-    private String[] nameStr = { "张山", "王丽", "河北", "赵信", "天气", "情侣", "恩爱", "x",
-            "fe", "挨饿", "偶见", "希望", "而青春", "HTC", "必定", "热", "r3", "R*&",
-            "1323", "%**" };
-    private ArrayList<Item> itemList = new ArrayList<Item>();
-    private ArrayList<String> initialList = new ArrayList<String>();
+    private CharacterParser characterParser;
+    private List<AreaBean.CtsBean> SourceDateList;
+
+    private String url = "http://api.meituan.com/dianying/cities.json?__vhost=api.maoyan.com&utm_campaign=AmovieBmovieCD-1&movieBundleVersion=7401&utm_source=Oppo&utm_medium=android&utm_term=7.4.0&utm_content=868853028490566&ci=65&net=255&dModel=R7Plus&uuid=D790FA371746BEECF2BBC8B2254831D38DACB3BC85736DAC8560BD590FAB382C&lat=38.883433&lng=121.544931&refer=%2FMovieMainActivity&__skck=6a375bce8c66a0dc293860dfa83833ef&__skts=1477021806651&__skua=32bcf146c756ecefe7535b95816908e3&__skno=29bb7e8c-c9e7-49d8-ae07-55aee2f6e8d6&__skcy=hURTq0HBNB%2B5vnxMZdw8HZj8Igs%3D";
+
+    private PinyinComparator pinyinComparator;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_area);
-        sideBar = (SideBar) findViewById(R.id.sideBar);
-        textView = (TextView) findViewById(R.id.textview);
-        listView = (ListView) findViewById(R.id.listview);
-        sideBar.setShowChooseText(textView);
-        ArrayList<String> strList = new ArrayList<String>();
-        for (String str : sideBar.b) {
-            strList.add(str);
+    protected int setLayout() {
+        return R.layout.activity_area;
+    }
 
-        }
-        for (String str : nameStr) {
-            String pinyin = PinYinUtils.convertWordGroup(str);
-            char initial = pinyin.toUpperCase().charAt(0);
-            if (!initialList.contains(String.valueOf(initial))) {
-                Item item = new Item();
-                item.setContent(String.valueOf(initial));
-                item.setTitle(true);
-                item.setPinyin(String.valueOf(initial).toLowerCase());
-                itemList.add(item);
-                initialList.add(String.valueOf(initial));
+    @Override
+    protected void initView() {
+        sideBar = byView(R.id.sidrbar);
+        dialog = byView(R.id.dialog);
+        sortListView = byView(R.id.country_lvcountry);
+        mClearEditText = byView(R.id.filter_edit);
+    }
+
+    @Override
+    protected void initDatas() {
+        SourceDateList = new ArrayList<>();
+        VolleyInstance.getInstance().startResult(url, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                AreaBean bean = gson.fromJson(resultStr, AreaBean.class);
+                SourceDateList = bean.getCts();
+                Log.d("qqq", "SourceDateList.size():" + SourceDateList.size());
+                initViews();
             }
-            Item item = new Item();
-            item.setContent(str);
-            item.setTitle(false);
-            item.setPinyin(pinyin.toLowerCase());
-            itemList.add(item);
-        }
-
-        Collections.sort(itemList, new Comparator<Item>() {
 
             @Override
-            public int compare(Item lhs, Item rhs) {
-                // TODO Auto-generated method stub
-                if (lhs.getPinyin().equals("#")) {
-                    return -1;
-                }
-                return lhs.getPinyin().compareTo(rhs.getPinyin());
-            }
-        });
-        listView.setAdapter(new ItemAdapter(itemList, this));
-        sideBar.setOnTouchingChangedListener(new SideBar.OnTouchingChangedListener() {
+            public void failure() {
 
-            @Override
-            public void onTouchingChanged(String s) {
-                // TODO Auto-generated method stub
-                Item item = new Item();
-                item.setContent(s);
-                item.setTitle(true);
-                item.setPinyin(s.toLowerCase());
-                for (int i = 0; i < itemList.size(); i++) {
-                    if(itemList.get(i).getContent().equals(s)){
-                        listView.setSelection(i);
-                        return;
-                    }
-                }
-//				Log.i("Log", itemList.indexOf(item)+"----"+s.toLowerCase());
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // TODO Auto-generated method stub
-                Toast.makeText(AreaActivity.this, itemList.get(position).getContent(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    private void initViews() {
+        characterParser = CharacterParser.getInstance();
+
+        pinyinComparator = new PinyinComparator();
+
+        sideBar.setTextView(dialog);
+
+        sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
+            @Override
+            public void onTouchingLetterChanged(String s) {
+                int position = adapter.getPositionForSection(s.charAt(0));
+                if(position != -1){
+                    sortListView.setSelection(position);
+                }
+
+            }
+        });
+
+        sortListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplication(), ((AreaBean.CtsBean)adapter.getItem(position)).getNm(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        SourceDateList = filledData(getResources().getStringArray(R.array.date));
+        SourceDateList = filledData(SourceDateList);
+
+        Log.d("qqq", "11111111.size():" + SourceDateList.size());
+        Collections.sort(SourceDateList, pinyinComparator);
+        adapter = new SortAdapter(this, SourceDateList);
+        sortListView.setAdapter(adapter);
+
+        mClearEditText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterData(s.toString());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    /**
+     * Œ™ListViewÃÓ≥‰ ˝æ›
+     * @return
+     */
+    private List<AreaBean.CtsBean> filledData(List<AreaBean.CtsBean> datas){
+        List<AreaBean.CtsBean> mSortList = new ArrayList<>();
+
+        for(int i=0; i < datas.size(); i++){
+            AreaBean.CtsBean sortModel = new AreaBean.CtsBean();
+            sortModel.setNm(datas.get(i).getNm());
+            String pinyin = characterParser.getSelling(datas.get(i).getNm());
+            String sortString = pinyin.substring(0, 1).toUpperCase();
+
+            if(sortString.matches("[A-Z]")){
+                sortModel.setPy(sortString.toUpperCase());
+            }else{
+                sortModel.setPy("#");
+            }
+
+            mSortList.add(sortModel);
+        }
+        return mSortList;
+
+    }
+
+    /**
+     * ∏˘æ› ‰»ÎøÚ÷–µƒ÷µ¿¥π˝¬À ˝æ›≤¢∏¸–¬ListView
+     * @param filterStr
+     */
+    private void filterData(String filterStr){
+        List<AreaBean.CtsBean> filterDateList = new ArrayList<>();
+
+        if(TextUtils.isEmpty(filterStr)){
+            filterDateList = SourceDateList;
+        }else{
+            filterDateList.clear();
+            for(AreaBean.CtsBean sortModel : SourceDateList){
+                String name = sortModel.getNm();
+                if(name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr.toString())){
+                    filterDateList.add(sortModel);
+                }
+            }
+        }
+
+        Collections.sort(filterDateList, pinyinComparator);
+        adapter.updateListView(filterDateList);
+    }
+
+
 }

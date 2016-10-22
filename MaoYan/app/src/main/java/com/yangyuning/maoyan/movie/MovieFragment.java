@@ -80,7 +80,7 @@ public class MovieFragment extends AbsBaseFragment implements RefreshListView.On
     private void initdata() {
         date=new ArrayList<>();
         for (int i = 0; i < 15; i++) {
-            date.add("寒寒");
+            date.add("天霜寒气");
         }
         movieAdapter=new MovieAdapter(context);
         movieListview.setAdapter(movieAdapter);
@@ -136,7 +136,7 @@ public class MovieFragment extends AbsBaseFragment implements RefreshListView.On
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    date.add(0, "万紫千红");
+                    date.add(0, "我家有一只凤尾蝶");
                     mHandler.sendEmptyMessage(REFRESH_COMPLETE);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block

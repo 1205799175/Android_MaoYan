@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/title_bar"
-    android:layout_height="44dp"
-    android:background="#ff3333">
+    android:layout_height="@dimen/title_bar_height"
+    android:background="@color/title_bar_bg">
     <!--杨宇宁-->
     <!--标题栏-->
 
@@ -11,9 +11,9 @@
         android:id="@+id/title_bar_tv_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:drawablePadding="10px"
-        android:drawableRight="@mipmap/title_bar_drop"
+        android:padding="@dimen/map_tv_padding"
+        android:drawablePadding="@dimen/mine_order_iv_top"
+        android:drawableRight="@mipmap/area_drop"
         android:textColor="@color/title_bar_tv_color" />
 
     <ImageView
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="18sp"
+        android:textSize="@dimen/title_bar_tv_size"
         android:textColor="@color/title_bar_tv_color"
         android:gravity="left" />
 

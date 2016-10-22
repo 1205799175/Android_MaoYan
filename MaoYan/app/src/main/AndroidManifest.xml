@@ -41,7 +41,8 @@
             android:name="com.amap.api.v2.apikey"
             android:value="eb2b3320e3128c221ff26b82d5c8fca6" />
         <!--声明定位服务组件-->
-        <service android:name="com.amap.api.location.APSService"></service>
+        <service android:name="com.amap.api.location.APSService"/>
+
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +52,6 @@
         </activity>
 
         <!--二维码详情-->
-        <activity android:name=".movie.qrcode.QRCodeActivity" />
         <activity android:name=".movie.zxing.activity.CaptureActivity" />
         <activity android:name=".movie.qrcode.CreateQRCodeActivity" />
         <!--电影 地区详情-->

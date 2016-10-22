@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/item_tb_tv"
         android:text="我的"
-        android:layout_marginTop="5px"
+        android:layout_marginTop="@dimen/movie_item_detail_top"
         android:textColor="@color/selector_tab_tv"
         android:textSize="@dimen/item_tab_tv_size"
         android:layout_width="wrap_content"

@@ -1,11 +1,13 @@
 package com.yangyuning.maoyan.movie.area;
 
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +15,12 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
+import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.mode.bean.AreaBean;
+import com.yangyuning.maoyan.movie.MovieFragment;
+import com.yangyuning.maoyan.utils.MaoYanValue;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,9 +41,10 @@ public class AreaActivity extends AbsBaseActivity {
     private CharacterParser characterParser;
     private List<AreaBean.CtsBean> SourceDateList;
 
-    private String url = "http://api.meituan.com/dianying/cities.json?__vhost=api.maoyan.com&utm_campaign=AmovieBmovieCD-1&movieBundleVersion=7401&utm_source=Oppo&utm_medium=android&utm_term=7.4.0&utm_content=868853028490566&ci=65&net=255&dModel=R7Plus&uuid=D790FA371746BEECF2BBC8B2254831D38DACB3BC85736DAC8560BD590FAB382C&lat=38.883433&lng=121.544931&refer=%2FMovieMainActivity&__skck=6a375bce8c66a0dc293860dfa83833ef&__skts=1477021806651&__skua=32bcf146c756ecefe7535b95816908e3&__skno=29bb7e8c-c9e7-49d8-ae07-55aee2f6e8d6&__skcy=hURTq0HBNB%2B5vnxMZdw8HZj8Igs%3D";
-
     private PinyinComparator pinyinComparator;
+
+    private ImageView backIv;
+    private EventBus eventBus;
 
 
     @Override
@@ -50,18 +58,24 @@ public class AreaActivity extends AbsBaseActivity {
         dialog = byView(R.id.dialog);
         sortListView = byView(R.id.country_lvcountry);
         mClearEditText = byView(R.id.filter_edit);
+        backIv = byView(R.id.title_bar_iv_left);
+        //初始化EventBus
+        eventBus = EventBus.getDefault();
     }
 
     @Override
     protected void initDatas() {
+        //设置标题栏
+        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back);
+        //点击事件
+        initListener();
         SourceDateList = new ArrayList<>();
-        VolleyInstance.getInstance().startResult(url, new VolleyResult() {
+        VolleyInstance.getInstance().startResult(MaoYanValue.AREA, new VolleyResult() {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 AreaBean bean = gson.fromJson(resultStr, AreaBean.class);
                 SourceDateList = bean.getCts();
-                Log.d("qqq", "SourceDateList.size():" + SourceDateList.size());
                 initViews();
             }
 
@@ -72,13 +86,20 @@ public class AreaActivity extends AbsBaseActivity {
         });
     }
 
+    private void initListener() {
+        //返回
+        backIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AreaActivity.this.finish();
+            }
+        });
+    }
+
     private void initViews() {
         characterParser = CharacterParser.getInstance();
-
         pinyinComparator = new PinyinComparator();
-
         sideBar.setTextView(dialog);
-
         sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
             @Override
             public void onTouchingLetterChanged(String s) {
@@ -90,18 +111,19 @@ public class AreaActivity extends AbsBaseActivity {
             }
         });
 
+        //ListView的点击事件, 得到行布局的值, 返回MovieFragment, 切换地址
         sortListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplication(), ((AreaBean.CtsBean)adapter.getItem(position)).getNm(), Toast.LENGTH_SHORT).show();
+                String area = ((AreaBean.CtsBean)adapter.getItem(position)).getNm();
+                eventBus.post(area);
+                finish();
+//                Toast.makeText(getApplication(), ((AreaBean.CtsBean)adapter.getItem(position)).getNm(), Toast.LENGTH_SHORT).show();
             }
         });
 
-//        SourceDateList = filledData(getResources().getStringArray(R.array.date));
         SourceDateList = filledData(SourceDateList);
 
-        Log.d("qqq", "11111111.size():" + SourceDateList.size());
         Collections.sort(SourceDateList, pinyinComparator);
         adapter = new SortAdapter(this, SourceDateList);
         sortListView.setAdapter(adapter);
@@ -126,7 +148,7 @@ public class AreaActivity extends AbsBaseActivity {
     }
 
     /**
-     * Œ™ListViewÃÓ≥‰ ˝æ›
+     * 给ListView设置数据
      * @return
      */
     private List<AreaBean.CtsBean> filledData(List<AreaBean.CtsBean> datas){
@@ -151,7 +173,7 @@ public class AreaActivity extends AbsBaseActivity {
     }
 
     /**
-     * ∏˘æ› ‰»ÎøÚ÷–µƒ÷µ¿¥π˝¬À ˝æ›≤¢∏¸–¬ListView
+     *
      * @param filterStr
      */
     private void filterData(String filterStr){

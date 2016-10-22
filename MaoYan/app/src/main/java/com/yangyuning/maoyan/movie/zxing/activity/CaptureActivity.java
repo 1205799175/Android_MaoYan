@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -34,7 +35,6 @@ import com.google.zxing.qrcode.QRCodeReader;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.movie.RGBLuminanceSource;
 import com.yangyuning.maoyan.movie.qrcode.CreateQRCodeActivity;
-import com.yangyuning.maoyan.movie.qrcode.QRCodeActivity;
 import com.yangyuning.maoyan.movie.zxing.camera.CameraManager;
 import com.yangyuning.maoyan.movie.zxing.decoding.CaptureActivityHandler;
 import com.yangyuning.maoyan.movie.zxing.decoding.InactivityTimer;
@@ -135,9 +135,9 @@ public class CaptureActivity extends Activity implements Callback {
 					//获取解析结果
 					Result ret = parseQRcodeBitmap(imgPath);
 					String result1 = ret.toString();
-					//跳转到一个WebView显示
-					Intent intent = new Intent(this, QRCodeActivity.class);
-					intent.putExtra("result", result1);
+					//跳转到浏览器显示
+					Uri uri = Uri.parse(result1);
+					Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 					startActivity(intent);
 					CaptureActivity.this.finish();
 					break;

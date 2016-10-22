@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!--TabLayout-->
     <color name="tab_selected_tv_color">#c40f0f</color>
     <color name="tab_default_tv_color">#000</color>
-    <color name="title_bar_tv_color">#fff</color>
 
     <!--二维码-->
     <color name="bg_color">#EDEDED</color>
@@ -36,4 +36,22 @@
     <color name="viewfinder_mask">#60000000</color>
     <color name="header">#58567D</color>
     <color name="grgray">#686868</color>
+
+    <!--电影界面-->
+    <color name="movie_point">#FFE48209</color>
+    <!--城市地区-->
+    <color name="area_center_text_color">#ffffffff</color>
+    <color name="area_center_text_bg">#6e6b6b</color>
+    <color name="area_letter_bg">#E0E0E0</color>
+    <color name="area_letter_text_color">#454545</color>
+    <!--我的-->
+    <color name="main_tb_bg">#E7E7E7</color>
+    <color name="mine_login_bg">#fd392e</color>
+    <color name="mine_login_hint_color">#fff</color>
+    <color name="text_color_black">#000</color>
+    <color name="mine_view_bg">#efe9eb</color>
+    <!--标题栏-->
+    <color name="title_bar_bg">#ff3333</color>
+    <color name="title_bar_tv_color">#fff</color>
+
 </resources>

@@ -15,4 +15,27 @@
         <item name="android:padding">12dp</item>
     </style>
 
+    <!--电影 LV 行布局 电影简介-->
+    <style name="movie_item_detail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:text">电影简介</item>
+    </style>
+    <!--我的-->
+    <style name="mine_item_setting_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#022</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="mine_item_setting_iv">
+        <item name="android:layout_width">@dimen/weight_zero</item>
+        <item name="android:layout_height">40px</item>
+        <item name="android:src">@mipmap/mine_setting_arrow</item>
+        <item name="android:paddingLeft">550px</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
 </resources>

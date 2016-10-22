@@ -10,14 +10,14 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/main_vp"
         android:layout_width="match_parent"
-        android:layout_height="0px"
+        android:layout_height="@dimen/weight_zero"
         android:layout_weight="1"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/main_tb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorHeight="0px"
-        android:background="#E7E7E7"/>
+        app:tabIndicatorHeight="@dimen/weight_zero"
+        android:background="@color/main_tb_bg"/>
 
 </LinearLayout>

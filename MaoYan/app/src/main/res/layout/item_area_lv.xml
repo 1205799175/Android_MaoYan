@@ -10,25 +10,25 @@
         android:id="@+id/catalog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.0"
-        android:background="#E0E0E0"
-        android:paddingBottom="5dip"
-        android:paddingLeft="5dip"
-        android:paddingTop="5dip"
+        android:layout_weight="1"
+        android:background="@color/area_letter_bg"
+        android:paddingBottom="@dimen/map_rl_margin"
+        android:paddingLeft="@dimen/map_rl_margin"
+        android:paddingTop="@dimen/map_rl_margin"
         android:text="A"
-        android:textColor="#454545" />
+        android:textColor="@color/area_letter_text_color" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="5dip"
-        android:layout_weight="1.0"
+        android:layout_marginLeft="@dimen/map_rl_margin"
+        android:layout_weight="1"
         android:gravity="center_vertical"
-        android:paddingBottom="10dip"
-        android:paddingTop="10dip"
+        android:paddingBottom="@dimen/camera_margin"
+        android:paddingTop="@dimen/camera_margin"
         android:text="hhhh"
-        android:textColor="#000" />
+        android:textColor="@color/text_color_black" />
 
 </LinearLayout>

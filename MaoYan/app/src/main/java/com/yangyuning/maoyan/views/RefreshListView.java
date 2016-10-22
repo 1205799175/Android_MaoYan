@@ -119,7 +119,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
     @Override
     public void onScrollStateChanged(AbsListView absListView, int i) {
     }
-    boolean haveFinish = false;
+    boolean haveFinish = true;
     @Override
     public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         mFirstVisibleItem = firstVisibleItem;
@@ -226,8 +226,6 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
                             if(haveFinish){
                                 //平滑的隐藏headerView
                                 this.smoothScrollBy((int) (-headViewHeight + offsetY / RATIO) + headViewHeight, 500);
-                                haveFinish = false;
-
                             }
                             //根据状态改变headerView
                             offsetY = 0;
@@ -246,6 +244,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
                         }
                         //这一套手势执行完，一定别忘了将记录y坐标的isRecord改为false，以便于下一次手势的执行
                         isRecord = false;
+                        haveFinish = false;
                         break;
                 }
 

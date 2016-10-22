@@ -2,5 +2,49 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--TabLayout-->
     <dimen name="item_tab_tv_size">12sp</dimen>
+    <!--城市地区-->
+    <dimen name="area_edittext_margin_top">5dp</dimen>
+    <dimen name="area_edit_padding_iv">10dp</dimen>
+    <dimen name="area_edit_text_size">15sp</dimen>
+    <dimen name="area_center_text">80dp</dimen>
+    <dimen name="area_sideBar">30dp</dimen>
+    <dimen name="weight_zero">0px</dimen>
+    <!--地图-->
+    <dimen name="map_rl_height">48dp</dimen>
+    <dimen name="map_rl_margin">5dp</dimen>
+    <dimen name="map_tv_padding">12dp</dimen>
+    <dimen name="map_tv_size">15sp</dimen>
+    <dimen name="map_et_size">14sp</dimen>
+    <!--二维码扫描界面-->
+    <dimen name="camera_margin">10dp</dimen>
+    <dimen name="camera_button_width">230dp</dimen>
+    <dimen name="camera_button_height">40dp</dimen>
+    <dimen name="camera_button_bottom">75dp</dimen>
+    <!--我的-->
+    <dimen name="mine_login_height">200px</dimen>
+    <dimen name="mine_login_icon">120px</dimen>
+    <dimen name="mine_login_icon_left">40px</dimen>
+    <dimen name="mine_login_hint_size">18sp</dimen>
+    <dimen name="mine_login_arrow_right">20px</dimen>
+    <dimen name="mine_login_arrow_left">250px</dimen>
+    <dimen name="mine_ll_height">140px</dimen>
+    <dimen name="mine_iv_height">60px</dimen>
+    <dimen name="mine_iv_top">15px</dimen>
+    <dimen name="mine_view_height">70px</dimen>
+    <dimen name="mine_view_width">1dp</dimen>
+    <dimen name="mine_order_height">100px</dimen>
+    <dimen name="mine_order_margin_top">30px</dimen>
+    <dimen name="mine_order_tv_left">20px</dimen>
+    <dimen name="mine_setting_top">2px</dimen>
+    <dimen name="mine_order_iv_top">10px</dimen>
+    <!--刷新-->
+    <dimen name="headview_iv">30dp</dimen>
+    <!--电影-->
+    <dimen name="movie_item_iv_height">260px</dimen>
+    <dimen name="movie_item_detail_top">5px</dimen>
+    <!--标题栏-->
+    <dimen name="title_bar_height">44dp</dimen>
+    <dimen name="title_bar_tv_size">18sp</dimen>
 </resources>

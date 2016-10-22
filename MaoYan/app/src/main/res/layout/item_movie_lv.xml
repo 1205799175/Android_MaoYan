@@ -4,56 +4,118 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="180px"
-        android:layout_height="272px"
-        android:layout_marginLeft="30px"
-        android:layout_marginTop="15px"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+    <!--movie lv 行布局-->
+    <RelativeLayout
+        android:layout_width="@dimen/weight_zero"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/mine_order_tv_left"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/movie_film_icon"
+            android:layout_width="@dimen/mine_login_height"
+            android:layout_height="@dimen/movie_item_iv_height"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"/>
 
-    <LinearLayout
-        android:layout_width="0px"
-        android:layout_height="272px"
-        android:layout_marginTop="15px"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="20px"
-        android:paddingTop="30px">
-
-        <TextView
-            android:id="@+id/movie_film_name"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="电影名字"
-            android:textSize="20sp"
-            android:layout_marginTop="20px"/>
+            android:src="@mipmap/movie_item_play_icon"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="@dimen/weight_zero"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/mine_order_margin_top">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mine_setting_top"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/movie_film_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="电影名字"
+                android:textSize="@dimen/area_edit_text_size"
+                android:textColor="@color/text_color_black" />
+
+            <ImageView
+                android:id="@+id/movie_film_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/movie_item_three_d"
+                android:layout_marginLeft="@dimen/mine_order_iv_top"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/movie_film_audience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_item_aud_tv"/>
+            <TextView
+                android:id="@+id/movie_film_audience_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/mine_order_iv_top"
+                android:textColor="@color/movie_point"
+                android:textSize="@dimen/area_edit_text_size"
+                android:text="6"/>
+            <View
+                android:id="@+id/movie_film_view"
+                android:layout_width="@dimen/mine_view_width"
+                android:layout_height="@dimen/mine_order_margin_top"
+                android:layout_marginLeft="@dimen/mine_order_iv_top"
+                android:layout_marginRight="@dimen/mine_order_iv_top"
+                android:background="@color/text_color_black"/>
+            <TextView
+                android:id="@+id/movie_film_professional"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_pro_tv"/>
+            <TextView
+                android:id="@+id/movie_film_professional_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/mine_order_iv_top"
+                android:textColor="@color/movie_point"
+                android:textSize="@dimen/area_edit_text_size"
+                android:text="3"/>
+        </LinearLayout>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5px"
-            android:text="电影简介"
-            android:textSize="15sp"
-            android:layout_marginTop="35px"/>
+            android:id="@+id/movie_film_detail"
+            style="@style/movie_item_detail"
+            android:layout_marginBottom="@dimen/movie_item_detail_top" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30px"
-            android:text="几家影院播放几次"
-            android:textSize="15sp" />
+            android:id="@+id/movie_film_count"
+            style="@style/movie_item_detail"
+            android:layout_marginBottom="@dimen/mine_order_margin_top"/>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="130px"
-        android:layout_height="match_parent"
-        android:layout_marginRight="40px"
-        android:gravity="center_vertical"
-        android:text="票的状态"
-        android:textSize="15sp" />
-
-
+    <LinearLayout
+        android:layout_width="@dimen/weight_zero"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="right"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/movie_item_prepare_sale"
+            android:layout_marginRight="@dimen/mine_login_icon_left" />
+    </LinearLayout>
 </LinearLayout>

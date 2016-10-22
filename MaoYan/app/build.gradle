@@ -33,4 +33,5 @@ dependencies {
     compile files('libs/AMap_Location_V3.0.0_20160922.jar')
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.google.code.gson:gson:2.7'
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

@@ -1,5 +1,6 @@
 package com.yangyuning.maoyan.cinema.map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +38,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource, AM
     private AMapLocationClientOption mLocationOption;
     private TextView mLocationErrText;
     private TextView mapMessage;
-
+    private TextView seek;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource, AM
         mapView = (MapView) findViewById(R.id.map);
         button = (ToggleButton) findViewById(R.id.toggle);
         mapMessage = (TextView) findViewById(R.id.map_message);
+        seek = (TextView) findViewById(R.id.btn_search);
         mapView.onCreate(savedInstanceState);
         //显示地图
         init();
@@ -62,6 +64,13 @@ public class MapActivity extends AppCompatActivity implements LocationSource, AM
                     aMap.setMapType(AMap.MAP_TYPE_SATELLITE);
                     isCheck = false;
                 }
+            }
+        });
+        seek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapActivity.this,NavigationActivity.class);
+                startActivity(intent);
             }
         });
     }

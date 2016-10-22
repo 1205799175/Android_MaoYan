@@ -35,19 +35,19 @@ public class CinemaAdapter extends AbsBaseAdapter<CinmaBean, CinemaAdapter.Cinem
     @Override
     protected void onBindViewHolder(CinemaViewHolder cinemaViewHolder, CinmaBean itemData, int position) {
         cinemaViewHolder.textView.setText(itemData.getName());
-        cinemaViewHolder.imageView.setImageResource(R.mipmap.ic_launcher);
+//        cinemaViewHolder.imageView.setImageResource(R.mipmap.ic_launcher);
 
     }
 
     class CinemaViewHolder extends AbsBaseAdapter.BaseHolder {
 
         TextView textView;
-        ImageView imageView;
+//        ImageView imageView;
 
         public CinemaViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.item_name);
-            imageView = (ImageView) itemView.findViewById(R.id.cinema_listener);
+//            imageView = (ImageView) itemView.findViewById(R.id.cinema_listener);
         }
     }
 

@@ -65,6 +65,8 @@
             android:value="1280" />
         <!--地图-->
         <activity android:name=".cinema.map.MapActivity"/>
+        <!--导航-->
+        <activity android:name=".cinema.map.NavigationActivity"/>
 
     </application>
 

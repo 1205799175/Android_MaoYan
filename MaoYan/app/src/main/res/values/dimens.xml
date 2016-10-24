@@ -44,6 +44,7 @@
     <!--电影-->
     <dimen name="movie_item_iv_height">260px</dimen>
     <dimen name="movie_item_detail_top">5px</dimen>
+    <dimen name="movie_item_lv_ima_height">400px</dimen>
     <!--标题栏-->
     <dimen name="title_bar_height">44dp</dimen>
     <dimen name="title_bar_tv_size">18sp</dimen>

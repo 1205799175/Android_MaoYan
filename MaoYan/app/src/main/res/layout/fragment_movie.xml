@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:clipChildren="false">
     <!--电影-->
 
     <include layout="@layout/layout_title_bar"/>
 
-    <com.yangyuning.maoyan.views.RefreshListView
-        android:id="@+id/movie_lv"
+    <com.yangyuning.maoyan.views.CardView
+        android:id="@+id/movie_card"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"/>
+        android:layout_height="match_parent"
+        android:clipChildren="false"/>
 
+    <!--替换布局-->
+    <LinearLayout
+        android:id="@+id/movie_replace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
 
-</LinearLayout>
+</RelativeLayout>

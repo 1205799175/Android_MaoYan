@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/mine_order_height"
+    android:orientation="vertical">
 
     <!--movie lv 行布局-->
     <RelativeLayout
-        android:layout_width="@dimen/weight_zero"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/mine_order_tv_left"
         android:layout_weight="1">
+
         <ImageView
             android:id="@+id/movie_film_icon"
-            android:layout_width="@dimen/mine_login_height"
-            android:layout_height="@dimen/movie_item_iv_height"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movie_item_lv_ima_height"
             android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/sitansen" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/movie_item_play_icon"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:src="@mipmap/movie_item_play_icon" />
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="@dimen/weight_zero"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/mine_iv_height"
         android:layout_weight="2"
         android:orientation="vertical"
         android:paddingTop="@dimen/mine_order_margin_top">
@@ -37,85 +40,99 @@
             android:layout_marginTop="@dimen/mine_setting_top"
             android:gravity="center"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/movie_film_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="电影名字"
-                android:textSize="@dimen/area_edit_text_size"
-                android:textColor="@color/text_color_black" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/area_edit_text_size" />
 
             <ImageView
                 android:id="@+id/movie_film_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/movie_item_three_d"
-                android:layout_marginLeft="@dimen/mine_order_iv_top"/>
+                android:layout_marginLeft="@dimen/mine_order_iv_top"
+                android:src="@mipmap/movie_item_three_d" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/mine_order_iv_top"
             android:gravity="center"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/movie_film_audience"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/movie_item_aud_tv"/>
+                android:text="@string/movie_item_aud_tv"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <TextView
                 android:id="@+id/movie_film_audience_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/mine_order_iv_top"
+                android:text="6"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/movie_point"
-                android:textSize="@dimen/area_edit_text_size"
-                android:text="6"/>
+                android:textSize="@dimen/area_edit_text_size" />
+
             <View
                 android:id="@+id/movie_film_view"
                 android:layout_width="@dimen/mine_view_width"
                 android:layout_height="@dimen/mine_order_margin_top"
                 android:layout_marginLeft="@dimen/mine_order_iv_top"
                 android:layout_marginRight="@dimen/mine_order_iv_top"
-                android:background="@color/text_color_black"/>
+                android:background="@color/text_color_black" />
+
             <TextView
                 android:id="@+id/movie_film_professional"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/movie_pro_tv"/>
+                android:text="@string/movie_pro_tv"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <TextView
                 android:id="@+id/movie_film_professional_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/mine_order_iv_top"
+                android:text="3"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/movie_point"
-                android:textSize="@dimen/area_edit_text_size"
-                android:text="3"/>
+                android:textSize="@dimen/area_edit_text_size" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/movie_film_detail"
             style="@style/movie_item_detail"
-            android:layout_marginBottom="@dimen/movie_item_detail_top" />
+            android:layout_marginBottom="@dimen/movie_item_detail_top"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/movie_film_count"
             style="@style/movie_item_detail"
-            android:layout_marginBottom="@dimen/mine_order_margin_top"/>
+            android:layout_marginBottom="@dimen/mine_order_margin_top"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="@dimen/weight_zero"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="right"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="right">
+
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@mipmap/movie_item_prepare_sale"
-            android:layout_marginRight="@dimen/mine_login_icon_left" />
+            android:layout_height="@dimen/movie_item_iv_height"
+            android:layout_marginRight="@dimen/mine_login_icon_left"
+            android:src="@mipmap/movie_item_prepare_sale" />
     </LinearLayout>
 </LinearLayout>

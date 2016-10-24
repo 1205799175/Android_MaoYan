@@ -2,6 +2,7 @@ package com.yangyuning.maoyan.cinema;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -13,6 +14,7 @@ import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.cinema.map.MapActivity;
 import com.yangyuning.maoyan.mode.bean.CinmaBean;
+import com.yangyuning.maoyan.views.RefreshListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +25,33 @@ import java.util.List;
  *
  * @author 杨宇宁 10.18
  */
-public class CinemaFragment extends AbsBaseFragment {
+public class CinemaFragment extends AbsBaseFragment implements RefreshListView.OnRefreshListener{
 
     private TextView areaTv, titleTv;
     private ImageView areaIv, searchIv;
-    private ListView listView;
+    private RefreshListView listView;
     private CinemaAdapter cinemaAdapter;
     private List<CinmaBean> datas;
     private TextView textView;
+    private final static int REFRESH_COMPLETE = 0;
+    /**
+     * 刷新视图
+     */
+    private Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            switch (msg.what) {
+                case REFRESH_COMPLETE:
+                    listView.setOnRefreshComplete();
+                    cinemaAdapter.setDatas(datas);
+                    cinemaAdapter.notifyDataSetChanged();
+                    listView.setSelection(0);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    };
 
     public static CinemaFragment newInstance() {
         Bundle args = new Bundle();
@@ -72,6 +93,7 @@ public class CinemaFragment extends AbsBaseFragment {
         }
         cinemaAdapter.setDatas(datas);
         listView.setAdapter(cinemaAdapter);
+        listView.setOnRefreshListener(this);
     }
 
     private void initTitleBar() {
@@ -79,5 +101,24 @@ public class CinemaFragment extends AbsBaseFragment {
         titleTv.setText(R.string.cinema);
         searchIv.setImageResource(R.mipmap.title_bar_search);
         areaIv.setImageResource(R.mipmap.title_bar_erea);
+    }
+    /**
+     * 刷新添加数据
+     */
+    @Override
+    public void onRefresh() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+//                    datas.add(0, "我家有一只凤尾蝶");
+                    mHandler.sendEmptyMessage(REFRESH_COMPLETE);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

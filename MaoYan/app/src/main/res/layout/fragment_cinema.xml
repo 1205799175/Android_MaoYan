@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="地图显示"/>
 
-    <ListView
+    <com.yangyuning.maoyan.views.RefreshListView
         android:id="@+id/cinema_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

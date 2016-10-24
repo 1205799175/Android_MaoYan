@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.mode.bean.AreaBean;
 import com.yangyuning.maoyan.movie.MovieFragment;
+import com.yangyuning.maoyan.utils.GestureHelper;
 import com.yangyuning.maoyan.utils.MaoYanValue;
 
 import org.greenrobot.eventbus.EventBus;
@@ -46,6 +48,8 @@ public class AreaActivity extends AbsBaseActivity {
     private ImageView backIv;
     private EventBus eventBus;
 
+//    private GestureHelper gestureHelper;
+
 
     @Override
     protected int setLayout() {
@@ -61,7 +65,28 @@ public class AreaActivity extends AbsBaseActivity {
         backIv = byView(R.id.title_bar_iv_left);
         //初始化EventBus
         eventBus = EventBus.getDefault();
+
+        //手势退出
+//        gestureHelper = new GestureHelper(this);
+//        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+//            @Override
+//            public void OnFlingLeft() {
+//                finish();
+//                // 退出动画
+//                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+//            }
+//
+//            @Override
+//            public void OnFlingRight() {
+//
+//            }
+//        });
     }
+
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        return gestureHelper.onTouchEvent(event);
+//    }
 
     @Override
     protected void initDatas() {
@@ -118,7 +143,6 @@ public class AreaActivity extends AbsBaseActivity {
                 String area = ((AreaBean.CtsBean)adapter.getItem(position)).getNm();
                 eventBus.post(area);
                 finish();
-//                Toast.makeText(getApplication(), ((AreaBean.CtsBean)adapter.getItem(position)).getNm(), Toast.LENGTH_SHORT).show();
             }
         });
 

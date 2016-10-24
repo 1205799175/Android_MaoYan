@@ -33,4 +33,5 @@
     <string name="mine_order_all">全部</string>
     <string name="movie_pro_tv">专业</string>
     <string name="movie_item_aud_tv">观众</string>
+    <string name="please_input">请输入要写入二维码的内容</string>
 </resources>

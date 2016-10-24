@@ -1,6 +1,8 @@
 package com.yangyuning.maoyan.movie.qrcode;
 
 import android.graphics.Bitmap;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +13,7 @@ import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.movie.zxing.encoding.EncodingHandler;
+import com.yangyuning.maoyan.utils.GestureHelper;
 
 /**
  * Created by dllo on 16/10/19.
@@ -22,6 +25,8 @@ public class CreateQRCodeActivity extends AbsBaseActivity{
     private ImageView qrCodeIv;
     private Button qrCodeBtn;
     private ImageView backIv;
+
+    private GestureHelper gestureHelper;
 
     @Override
     protected int setLayout() {
@@ -39,7 +44,29 @@ public class CreateQRCodeActivity extends AbsBaseActivity{
     @Override
     protected void initDatas() {
         initListener();
+
         new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back);
+
+        //手势退出
+        gestureHelper = new GestureHelper(this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+            @Override
+            public void OnFlingLeft() {
+                CreateQRCodeActivity.this.finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+            }
+
+            @Override
+            public void OnFlingRight() {
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureHelper.onTouchEvent(event);
     }
 
     private void initListener() {
@@ -50,7 +77,7 @@ public class CreateQRCodeActivity extends AbsBaseActivity{
                 String content = qrCodeEt.getText().toString();
                 //判断内容是否为空
                 if (null == content || "".equals(content)) {
-                    Toast.makeText(CreateQRCodeActivity.this, "请输入要写入二维码的内容", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateQRCodeActivity.this, R.string.please_input, Toast.LENGTH_SHORT).show();
                     return;
                 }
 

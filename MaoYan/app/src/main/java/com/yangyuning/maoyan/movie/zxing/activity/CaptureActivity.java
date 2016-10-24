@@ -17,6 +17,7 @@ import android.provider.MediaStore;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
@@ -33,12 +34,14 @@ import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
 import com.yangyuning.maoyan.R;
+import com.yangyuning.maoyan.movie.MovieFragment;
 import com.yangyuning.maoyan.movie.RGBLuminanceSource;
 import com.yangyuning.maoyan.movie.qrcode.CreateQRCodeActivity;
 import com.yangyuning.maoyan.movie.zxing.camera.CameraManager;
 import com.yangyuning.maoyan.movie.zxing.decoding.CaptureActivityHandler;
 import com.yangyuning.maoyan.movie.zxing.decoding.InactivityTimer;
 import com.yangyuning.maoyan.movie.zxing.view.ViewfinderView;
+import com.yangyuning.maoyan.utils.GestureHelper;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -66,6 +69,9 @@ public class CaptureActivity extends Activity implements Callback {
 	private boolean vibrate;
 	private Button cancelScanButton;
 
+	//手势退出
+	private GestureHelper gestureHelper;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -81,7 +87,29 @@ public class CaptureActivity extends Activity implements Callback {
 
 		//弹出PopMenu
 		initListener();
+
+		//初始化
+		gestureHelper = new GestureHelper(this);
+		gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+			@Override
+			public void OnFlingLeft() {
+				CaptureActivity.this.finish();
+				// 退出动画
+				overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+			}
+
+			@Override
+			public void OnFlingRight() {
+
+			}
+		});
 	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		return gestureHelper.onTouchEvent(event);
+	}
+
 
 	private void initListener() {
 		//弹出PopopMenu
@@ -258,12 +286,11 @@ public class CaptureActivity extends Activity implements Callback {
 		String resultString = result.getText();
 		//FIXME
 		if (resultString.equals("")) {
-			Toast.makeText(CaptureActivity.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else {
-			System.out.println("Result:"+resultString);
+//			System.out.println("Result:"+resultString);
 			Intent resultIntent = new Intent();
 			Bundle bundle = new Bundle();
-			bundle.putString("result", resultString);
+			bundle.putString(MovieFragment.KET_RESULT, resultString);
 			resultIntent.putExtras(bundle);
 			this.setResult(-1, resultIntent);
 		}

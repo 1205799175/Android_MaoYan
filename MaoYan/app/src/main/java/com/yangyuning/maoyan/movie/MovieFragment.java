@@ -34,6 +34,7 @@ import java.util.List;
  */
 public class MovieFragment extends AbsBaseFragment implements RefreshListView.OnRefreshListener {
 
+    public static final String KET_RESULT = "result";
     private TextView areatTv, titleTv;
     private ImageView qRCode; //二维码
     private static final int PHOTO_PIC = 1;
@@ -153,7 +154,7 @@ public class MovieFragment extends AbsBaseFragment implements RefreshListView.On
         if (resultCode == -1) {
             switch (requestCode) {
                 case PHOTO_PIC:
-                    String result2 = data.getExtras().getString("result");
+                    String result2 = data.getExtras().getString(KET_RESULT);
                     Uri uri = Uri.parse(result2);
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     context.startActivity(intent);

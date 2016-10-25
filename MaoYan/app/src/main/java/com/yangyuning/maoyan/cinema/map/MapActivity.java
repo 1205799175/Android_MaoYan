@@ -50,6 +50,7 @@ import java.util.List;
 public class MapActivity extends AppCompatActivity implements PoiSearch.OnPoiSearchListener,
         AMap.OnMapClickListener, AMap.OnMarkerClickListener, AMap.OnInfoWindowClickListener,
         AMap.InfoWindowAdapter, LocationSource, RadioGroup.OnCheckedChangeListener, AMapLocationListener, RouteSearch.OnRouteSearchListener {
+    public static final String KEY_ADDTESS = "address";
     private MapView mMapView;
     private AMap aMap;
     //定位

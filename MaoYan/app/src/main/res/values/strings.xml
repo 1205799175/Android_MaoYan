@@ -7,7 +7,6 @@
     <string name="mine">我的</string>
     <string name="dalian">大连</string>
     <string name="hotShow">热映</string>
-<<<<<<< HEAD
     <string name="have_on_point">暂无评分</string>
     <string name="area_hint">请输入关键字</string>
     <string name="create_qr_code">生成二维码</string>
@@ -35,7 +34,6 @@
     <string name="movie_pro_tv">专业</string>
     <string name="movie_item_aud_tv">观众</string>
     <string name="please_input">请输入要写入二维码的内容</string>
-=======
     <string name="preference_default_tts_role">xiaoyan</string>
     <string name="preference_key_tts_speed">tts_speed</string>
     <string name="preference_title_tts_speed">语速</string>
@@ -51,5 +49,5 @@
     <string name="intell_bd_title">智能播报</string>
     <string name="app_id">11111111</string>
     <string name="no_result">对不起，没有搜索到相关数据！</string>
->>>>>>> feature/姜鑫
+    <string name="cinema_price_start">元起</string>
 </resources>

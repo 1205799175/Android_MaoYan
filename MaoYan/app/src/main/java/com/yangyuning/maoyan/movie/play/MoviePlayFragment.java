@@ -27,8 +27,9 @@ public class MoviePlayFragment extends Fragment{
     private View root;
     private View view;
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @org.jetbrains.annotations.Nullable ViewGroup container, @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_movie_play, container, false);
         initUI(root);
         return root;
@@ -73,7 +74,6 @@ public class MoviePlayFragment extends Fragment{
         ViewPropertyAnimator.animate(view).rotationY(90)
                 .setDuration(300).setListener(null)
                 .setInterpolator(new AccelerateInterpolator());
-
 
         ViewPropertyAnimator.animate(root)
                 .rotationY(0).setDuration(200).setStartDelay(300)

@@ -6,14 +6,11 @@
     <!--影院-->
 
     <include layout="@layout/layout_title_bar"/>
-    <TextView
-        android:id="@+id/map_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="地图显示"/>
 
     <com.yangyuning.maoyan.views.RefreshListView
         android:id="@+id/cinema_list_view"
+        android:layout_margin="@dimen/cinema_margin"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -48,4 +48,8 @@
     <!--标题栏-->
     <dimen name="title_bar_height">44dp</dimen>
     <dimen name="title_bar_tv_size">18sp</dimen>
+    <dimen name="cinema_margin">20px</dimen>
+    <dimen name="cinema_title_size">18sp</dimen>
+    <dimen name="cinema_title_price">10px</dimen>
+    <dimen name="cinema_price_size">15sp</dimen>
 </resources>

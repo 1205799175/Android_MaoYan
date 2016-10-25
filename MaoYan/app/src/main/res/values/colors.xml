@@ -36,4 +36,7 @@
     <color name="viewfinder_mask">#60000000</color>
     <color name="header">#58567D</color>
     <color name="grgray">#686868</color>
+    <!--地图-->
+    <color name="red">#FF0000</color>
+    <color name="darkgrey">#C0C0C0</color>
 </resources>

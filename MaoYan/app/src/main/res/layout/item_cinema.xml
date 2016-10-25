@@ -14,8 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:textSize="18sp"
-        android:text="中影明生国际影城(华太财富广场店)"/>
+        android:textSize="18sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

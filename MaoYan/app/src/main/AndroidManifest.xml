@@ -67,6 +67,8 @@
         <activity android:name=".cinema.map.MapActivity"/>
         <!--导航-->
         <activity android:name=".cinema.map.NavigationActivity"/>
+        <!--语音导航-->
+        <activity android:name=".cinema.map.TestActivity"/>
 
     </application>
 

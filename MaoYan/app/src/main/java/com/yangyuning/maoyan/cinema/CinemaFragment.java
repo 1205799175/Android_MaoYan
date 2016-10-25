@@ -3,16 +3,14 @@ package com.yangyuning.maoyan.cinema;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yangyuning.maoyan.R;
-import com.yangyuning.maoyan.activity.MainActivity;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
-import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.cinema.map.MapActivity;
-import com.yangyuning.maoyan.mode.bean.CinmaBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +27,8 @@ public class CinemaFragment extends AbsBaseFragment {
     private ImageView areaIv, searchIv;
     private ListView listView;
     private CinemaAdapter cinemaAdapter;
-    private List<CinmaBean> datas;
     private TextView textView;
-
-
-
-    private String url = "http://api.meituan.com/mmcs/cinema/v1/select/cinemas.json?" +
-            "cityId=65&channelId=1&clientType=android&offset=0&limit=10&userid=-1&__vhost=api.maoyan.com&utm_campaign=AmovieBmovieCD-1&movieBundleVersion=7401&utm_source=360tjy-dy&utm_medium=android&utm_term=7.4.0&utm_content=000000000000000&ci=65&net=255&dModel=Google%20Nexus%205%20-%205.1.0%20-%20API%2022%20-%201080x1920" +
-            "&uuid=2C2C0ECD557F366849954BEF88D0017A03C78C77F2FA655C70E142ED41438C39&lat=0.0&lng=0.0&refer=%2FWelcome&__skck=6a375bce8c66a0dc293860dfa83833ef&__skts=1477104759676&__skua=32bcf146c756ecefe7535b95816908e3&__skno=3d62a81a-0839-4b3b-ab33-3ea64ee2f1be&__skcy=MI6gwa8jXEQkbmne9Px4aSKRVZs%3D";
+    private List<String> datas;
 
     public static CinemaFragment newInstance() {
         Bundle args = new Bundle();
@@ -58,10 +50,11 @@ public class CinemaFragment extends AbsBaseFragment {
         searchIv = byView(R.id.title_bar_iv_collect);
         listView = byView(R.id.cinema_list_view);
         textView = byView(R.id.map_tv);
-        textView.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MapActivity.class);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context,MapActivity.class);
+                intent.putExtra("move","大连市沙河口区中山路673号福利庭生活广场3F");
                 context.startActivity(intent);
             }
         });
@@ -69,15 +62,14 @@ public class CinemaFragment extends AbsBaseFragment {
 
     @Override
     protected void initDatas() {
-        initTitleBar();
-
-        cinemaAdapter = new CinemaAdapter(context);
         datas = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
-            datas.add(new CinmaBean("中影明生国际影城(华太财富广场店)" + i));
+            datas.add("电影院" + i);
         }
+        cinemaAdapter = new CinemaAdapter(context);
         cinemaAdapter.setDatas(datas);
         listView.setAdapter(cinemaAdapter);
+        initTitleBar();
     }
 
     private void initTitleBar() {

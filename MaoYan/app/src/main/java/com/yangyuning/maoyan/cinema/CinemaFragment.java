@@ -4,17 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yangyuning.maoyan.R;
-import com.yangyuning.maoyan.activity.MainActivity;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
-import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.cinema.map.MapActivity;
+<<<<<<< HEAD
 import com.yangyuning.maoyan.mode.bean.CinmaBean;
 import com.yangyuning.maoyan.views.RefreshListView;
+=======
+>>>>>>> feature/姜鑫
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,8 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
     private ImageView areaIv, searchIv;
     private RefreshListView listView;
     private CinemaAdapter cinemaAdapter;
-    private List<CinmaBean> datas;
     private TextView textView;
+<<<<<<< HEAD
     private final static int REFRESH_COMPLETE = 0;
     /**
      * 刷新视图
@@ -52,6 +54,9 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
             }
         }
     };
+=======
+    private List<String> datas;
+>>>>>>> feature/姜鑫
 
     public static CinemaFragment newInstance() {
         Bundle args = new Bundle();
@@ -73,10 +78,11 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         searchIv = byView(R.id.title_bar_iv_collect);
         listView = byView(R.id.cinema_list_view);
         textView = byView(R.id.map_tv);
-        textView.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MapActivity.class);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context,MapActivity.class);
+                intent.putExtra("move","大连市沙河口区中山路673号福利庭生活广场3F");
                 context.startActivity(intent);
             }
         });
@@ -84,16 +90,18 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
 
     @Override
     protected void initDatas() {
-        initTitleBar();
-
-        cinemaAdapter = new CinemaAdapter(context);
         datas = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
-            datas.add(new CinmaBean("电影" + i));
+            datas.add("电影院" + i);
         }
+        cinemaAdapter = new CinemaAdapter(context);
         cinemaAdapter.setDatas(datas);
         listView.setAdapter(cinemaAdapter);
+<<<<<<< HEAD
         listView.setOnRefreshListener(this);
+=======
+        initTitleBar();
+>>>>>>> feature/姜鑫
     }
 
     private void initTitleBar() {

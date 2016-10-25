@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <!--地图-->
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/main_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="搜索"/>
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <RelativeLayout
+        android:layout_height="match_parent">
+    </com.amap.api.maps.MapView>
+    <TextView
+        android:id="@+id/location_errInfo_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <ToggleButton
-        android:id="@+id/toggle"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:textOff="@string/map_standard_map"
         android:textOn="@string/map_star_map"
         android:onClick="false"/>
@@ -73,28 +75,30 @@
             </LinearLayout>
         </RelativeLayout>
 
+=======
+        android:layout_gravity="bottom|left"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/red"
+        android:textColor="@color/darkgrey"
+        android:text="TextView"
+        android:visibility="gone"/>
+>>>>>>> feature/姜鑫
 
-
-    </RelativeLayout>
     <RadioGroup
         android:id="@+id/gps_radio_group"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <RadioButton
-        android:id="@+id/gps_locate_button"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"/>
-    </RadioGroup>
-    <TextView
-        android:id="@+id/location_errInfo_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"/>
-    <TextView
-        android:id="@+id/map_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
 
-</FrameLayout>
+        <RadioButton
+            android:id="@+id/gps_locate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="定位"
+            android:textColor="@android:color/black" />
+    </RadioGroup>
+</RelativeLayout>

@@ -31,9 +31,5 @@ dependencies {
     compile files('libs/zxing.jar')
     compile files('libs/AMap3DMap_4.1.1_AMapNavi_1.9.3_AMapSearch_3.5.0_AMapLocation_3.0.0_20161019.jar')
     compile files('libs/AMap_Location_V3.0.0_20160922.jar')
-    compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.google.code.gson:gson:2.7'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile files('libs/nineoldandroids-2.4.0.jar')
-    compile 'org.jetbrains:annotations-java5:15.0'
 }

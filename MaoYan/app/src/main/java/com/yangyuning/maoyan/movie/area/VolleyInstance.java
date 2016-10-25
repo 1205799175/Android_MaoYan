@@ -11,7 +11,7 @@ import com.yangyuning.maoyan.app.MaoYanApp;
  * Created by dllo on 16/9/10.
  * Volley使用单例类
  */
-public class VolleyInstance {
+public class  VolleyInstance {
 
     private static VolleyInstance instance;
     //定义请求队列

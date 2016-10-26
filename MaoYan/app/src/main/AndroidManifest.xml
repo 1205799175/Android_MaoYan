@@ -78,7 +78,8 @@
         <activity android:name=".cinema.map.MapActivity"/>
 
         <!--播放视频-->
-        <activity android:name=".movie.play.MoviePlayActivity"/>
+        <activity android:name=".movie.play.MoviePlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <!--我的-订单-待付款-->
         <activity android:name=".mine.order.PayActivity"/>
         <!--支付-->

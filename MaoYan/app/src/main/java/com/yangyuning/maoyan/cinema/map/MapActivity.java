@@ -104,13 +104,14 @@ public class MapActivity extends AppCompatActivity implements PoiSearch.OnPoiSea
         //显示地图
         init();
         button = (Button) findViewById(R.id.main_btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //开始搜索
-                doSearchQuery();
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //开始搜索
+//                doSearchQuery();
+//            }
+//        });
+        doSearchQuery();
         setfromandtoMarker();
     }
 

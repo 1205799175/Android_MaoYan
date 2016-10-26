@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/camera_margin"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/weight_zero"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/item_pay_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/title_bar_tv_size"
+            android:textColor="@color/text_color_black"
+            android:text="机械师" />
+
+        <TextView
+            android:id="@+id/item_pay_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/cinema_price_size"
+            android:textColor="@color/mine_login_bg"
+            android:text="20" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/item_pay_pay_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/pay"/>
+
+</LinearLayout>

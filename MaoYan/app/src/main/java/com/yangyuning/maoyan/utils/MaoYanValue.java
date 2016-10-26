@@ -8,6 +8,11 @@ public class MaoYanValue {
     public MaoYanValue(){}
 
     /**
+     * 待付款数据库名
+     */
+    public static final String PAY_DB_NAME = "Pay.db";
+
+    /**
      * 城市Activity 接口
      */
     public static final String AREA = "http://api.meituan.com/dianying/cities.json?__vhost=api.maoyan.com&utm_campaign=AmovieBmovieCD-1&movieBundleVersion=7401&utm_source=Oppo&utm_medium=android&utm_term=7.4.0&utm_content=868853028490566&ci=65&net=255&dModel=R7Plus&uuid=D790FA371746BEECF2BBC8B2254831D38DACB3BC85736DAC8560BD590FAB382C&lat=38.883433&lng=121.544931&refer=%2FMovieMainActivity&__skck=6a375bce8c66a0dc293860dfa83833ef&__skts=1477021806651&__skua=32bcf146c756ecefe7535b95816908e3&__skno=29bb7e8c-c9e7-49d8-ae07-55aee2f6e8d6&__skcy=hURTq0HBNB%2B5vnxMZdw8HZj8Igs%3D";

@@ -2,6 +2,7 @@ package com.yangyuning.maoyan.movie;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,7 +41,6 @@ public class MovieAdapter extends AbsBaseAdapter<MovieBean.DataBean.HotBean, Mov
         movieViewHolder.filmPrePoint.setText(itemData.getProScore() + "");
         movieViewHolder.filmDetail.setText(itemData.getScm());
         movieViewHolder.filmCount.setText(itemData.getShowInfo());
-//        Picasso.with(context).load(itemData.getImg()).into(movieViewHolder.filmIcon);
     }
 
     public class MovieViewHolder extends AbsBaseAdapter.BaseHolder {

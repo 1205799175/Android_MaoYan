@@ -211,6 +211,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/order_pay"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"

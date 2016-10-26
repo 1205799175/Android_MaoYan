@@ -58,6 +58,20 @@ public class BaseTitleBar {
     }
 
     /**
+     * 左边图片的点击事件
+     */
+    public BaseTitleBar setBackListener(View.OnClickListener listener) {
+        if(title_bar_left.getVisibility() == View.VISIBLE) {
+            title_bar_left.setOnClickListener(listener);
+        }
+        if(title_bar_left.getVisibility() == View.VISIBLE) {
+            title_bar_left.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+
+    /**
      * 中间文字
      */
     public BaseTitleBar setTitle(String str) {

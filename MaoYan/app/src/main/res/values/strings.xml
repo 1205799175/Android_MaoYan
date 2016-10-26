@@ -50,4 +50,7 @@
     <string name="app_id">11111111</string>
     <string name="no_result">对不起，没有搜索到相关数据！</string>
     <string name="cinema_price_start">元起</string>
+    <string name="have_add_one">已添加一张</string>
+    <string name="to_payment">至待付款</string>
+    <string name="yuan">元</string>
 </resources>

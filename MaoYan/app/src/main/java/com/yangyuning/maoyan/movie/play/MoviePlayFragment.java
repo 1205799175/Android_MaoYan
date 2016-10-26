@@ -3,16 +3,12 @@ package com.yangyuning.maoyan.movie.play;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.resource.bytes.BytesResource;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.view.ViewHelper;
@@ -27,8 +23,9 @@ public class MoviePlayFragment extends Fragment{
     private View root;
     private View view;
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @org.jetbrains.annotations.Nullable ViewGroup container, @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_movie_play, container, false);
         initUI(root);
         return root;

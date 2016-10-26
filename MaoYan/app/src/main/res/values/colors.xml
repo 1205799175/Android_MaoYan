@@ -36,7 +36,6 @@
     <color name="viewfinder_mask">#60000000</color>
     <color name="header">#58567D</color>
     <color name="grgray">#686868</color>
-<<<<<<< HEAD
 
     <!--电影界面-->
     <color name="movie_point">#FFE48209</color>
@@ -55,9 +54,8 @@
     <color name="title_bar_bg">#ff3333</color>
     <color name="title_bar_tv_color">#fff</color>
 
-=======
+
     <!--地图-->
     <color name="red">#FF0000</color>
     <color name="darkgrey">#C0C0C0</color>
->>>>>>> feature/姜鑫
 </resources>

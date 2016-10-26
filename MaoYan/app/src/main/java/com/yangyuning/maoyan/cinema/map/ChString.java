@@ -1,7 +1,8 @@
 package com.yangyuning.maoyan.cinema.map;
 
 /**
- * Created by dllo on 16/10/24.
+ * 地图界面
+ * @author 姜鑫
  */
 public class ChString {
     public static final String Kilometer = "\u516c\u91cc";// "公里";

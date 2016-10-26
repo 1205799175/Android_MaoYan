@@ -14,6 +14,10 @@ import com.amap.api.services.route.RideStep;
 import com.yangyuning.maoyan.R;
 
 import java.util.List;
+/**
+ * 地图界面
+ * @author 姜鑫
+ */
 
 /**
  * 骑行路线图层类。在高德地图API里，如果要显示步行路线规划，可以用此类来创建骑行路线图层。如不满足需求，也可以自己创建自定义的骑行路线图层。

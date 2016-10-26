@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllo on 16/10/24.
+ * 地图界面
+ * @author 姜鑫
  */
 public class RouteOverlay {
     protected List<Marker> stationMarkers = new ArrayList<Marker>();

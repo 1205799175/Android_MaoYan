@@ -6,17 +6,12 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.cinema.map.MapActivity;
-<<<<<<< HEAD
-import com.yangyuning.maoyan.mode.bean.CinmaBean;
 import com.yangyuning.maoyan.views.RefreshListView;
-=======
->>>>>>> feature/姜鑫
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +29,6 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
     private RefreshListView listView;
     private CinemaAdapter cinemaAdapter;
     private TextView textView;
-<<<<<<< HEAD
     private final static int REFRESH_COMPLETE = 0;
     /**
      * 刷新视图
@@ -54,9 +48,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
             }
         }
     };
-=======
     private List<String> datas;
->>>>>>> feature/姜鑫
 
     public static CinemaFragment newInstance() {
         Bundle args = new Bundle();
@@ -86,6 +78,14 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
                 context.startActivity(intent);
             }
         });
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context,MapActivity.class);
+//                intent.putExtra("move","大连市甘井子区高新园区黄浦路500号万达广场4层");
+//                context.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
@@ -97,11 +97,8 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         cinemaAdapter = new CinemaAdapter(context);
         cinemaAdapter.setDatas(datas);
         listView.setAdapter(cinemaAdapter);
-<<<<<<< HEAD
         listView.setOnRefreshListener(this);
-=======
         initTitleBar();
->>>>>>> feature/姜鑫
     }
 
     private void initTitleBar() {

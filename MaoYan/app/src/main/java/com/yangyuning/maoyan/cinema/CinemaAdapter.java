@@ -20,7 +20,6 @@ public class CinemaAdapter extends AbsBaseAdapter<CinemaBean, CinemaAdapter.Cine
         super(context);
     }
 
-
     @Override
     protected int setItemLayout() {
         return R.layout.item_cinema;

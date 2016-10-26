@@ -14,7 +14,12 @@ import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.cinema.map.MapActivity;
 import com.yangyuning.maoyan.mode.bean.CinemaBean;
+import com.yangyuning.maoyan.movie.area.AreaActivity;
 import com.yangyuning.maoyan.views.RefreshListView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -74,18 +79,15 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         areaIv = byView(R.id.title_bar_iv_share);
         searchIv = byView(R.id.title_bar_iv_collect);
         listView = byView(R.id.cinema_list_view);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context,MapActivity.class);
-                intent.putExtra(MapActivity.KEY_ADDTESS, datas.get(position - 1).getAddr());
-                context.startActivity(intent);
-            }
-        });
     }
 
     @Override
     protected void initDatas() {
+        //注册
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+
         datas = new ArrayList<>();
         //从excel获取数据
         getExcelData();
@@ -94,6 +96,26 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         listView.setAdapter(cinemaAdapter);
         listView.setOnRefreshListener(this);
         initTitleBar();
+        initListener();
+    }
+
+    private void initListener() {
+        //点击选择地区
+        areaTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, AreaActivity.class));
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context,MapActivity.class);
+                intent.putExtra(MapActivity.KEY_ADDTESS, datas.get(position - 1).getAddr());
+                context.startActivity(intent);
+            }
+        });
     }
 
     private void getExcelData() {
@@ -114,6 +136,12 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         } catch (Exception e) {
         }
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getData(String area) {
+        areaTv.setText(area);
+    }
+
 
     private void initTitleBar() {
         areaTv.setText(R.string.dalian);
@@ -140,4 +168,11 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
             }
         }).start();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
 }

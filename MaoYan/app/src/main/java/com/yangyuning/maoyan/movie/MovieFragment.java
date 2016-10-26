@@ -10,13 +10,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.mode.bean.MovieBean;
+import com.yangyuning.maoyan.mode.bean.PayBean;
+import com.yangyuning.maoyan.mode.db.LiteOrmInstance;
 import com.yangyuning.maoyan.movie.area.AreaActivity;
 import com.yangyuning.maoyan.movie.area.VolleyInstance;
 import com.yangyuning.maoyan.movie.area.VolleyResult;
@@ -228,16 +232,30 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
             if (convertView == null) {
                 convertView = LayoutInflater.from(context).inflate(R.layout.item_movie_lv, parent, false);
             }
-            TextView nameTv, authorPointTv, detialTv, countTv;
+            TextView nameTv, authorPointTv, proPointTv, detialTv, countTv, priceTv;
+            ImageView buyIv;
             nameTv = (TextView) convertView.findViewById(R.id.movie_film_name);
             authorPointTv = (TextView) convertView.findViewById(R.id.movie_film_audience_point);
+            proPointTv = (TextView) convertView.findViewById(R.id.movie_film_professional_point);
             detialTv = (TextView) convertView.findViewById(R.id.movie_film_detail);
             countTv = (TextView) convertView.findViewById(R.id.movie_film_count);
-            MovieBean.DataBean.HotBean text = getItem(position % datas.size());
+            buyIv = (ImageView) convertView.findViewById(R.id.movie_film_buy);
+            priceTv = (TextView) convertView.findViewById(R.id.movie_film_price);
+            final MovieBean.DataBean.HotBean text = getItem(position % datas.size());
             nameTv.setText(text.getNm());
             authorPointTv.setText(text.getMk() + "");
+            proPointTv.setText(text.getProScore() + "");
             detialTv.setText(text.getScm());
             countTv.setText(text.getShowInfo());
+            priceTv.setText(text.getVnum() + context.getResources().getString(R.string.yuan));
+            //点击预售按钮
+            buyIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LiteOrmInstance.getLiteOrmInstance().insertOne(new PayBean(text.getNm(), text.getVnum()));
+                    Toast.makeText(context, context.getResources().getString(R.string.have_add_one) + text.getNm() + context.getResources().getString(R.string.to_payment), Toast.LENGTH_SHORT).show();
+                }
+            });
             return convertView;
         }
     }

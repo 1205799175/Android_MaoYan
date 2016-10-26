@@ -3,13 +3,17 @@ package com.yangyuning.maoyan.movie.play;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.tedcoder.wkvideoplayer.util.DensityUtil;
 import com.android.tedcoder.wkvideoplayer.view.MediaController;
@@ -26,7 +30,10 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
     private View mPlayBtnView;
     private String url;
     private TextView nameTv, foreTv, dirTv, descTv, catTv, timeTv;
-    private LinearLayout layout;
+    private RelativeLayout view;
+    private ConnectivityManager mConnectivity;
+    private TelephonyManager mTelephony;
+    private NetworkInfo info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,7 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         descTv = (TextView) findViewById(R.id.move_desc);
         catTv = (TextView) findViewById(R.id.move_cat);
         timeTv = (TextView) findViewById(R.id.move_time);
+        view = (RelativeLayout) findViewById(R.id.move_title);
         Intent intent = getIntent();
         url = intent.getStringExtra("move");
         nameTv.setText(intent.getStringExtra("name"));
@@ -48,8 +56,31 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         descTv.setText(intent.getStringExtra("desc"));
         catTv.setText("影片类型: " + intent.getStringExtra("cat"));
         timeTv.setText("大陆上映: " + intent.getStringExtra("time"));
+        //网络判断
+        internet();
         mPlayBtnView.setOnClickListener(this);
         mSuperVideoPlayer.setVideoPlayCallback(mVideoPlayCallback);
+    }
+    //判断是否连接网络
+    private void internet() {
+        mConnectivity = (ConnectivityManager)getSystemService(this.CONNECTIVITY_SERVICE);
+        mTelephony = (TelephonyManager)this.getSystemService(TELEPHONY_SERVICE);
+        //检查网络连接
+        info = mConnectivity.getActiveNetworkInfo();
+
+        if (info == null || !mConnectivity.getBackgroundDataSetting()) {
+            Toast.makeText(this, "当前无网络连接", Toast.LENGTH_SHORT).show();
+        }else {
+            int netType = info.getType();
+            int netSubtype = info.getSubtype();
+
+            if (netType == ConnectivityManager.TYPE_WIFI) {  //WIFI
+                Toast.makeText(this, "当前是无线网络状态", Toast.LENGTH_SHORT).show();
+            } else if (netType == ConnectivityManager.TYPE_MOBILE) {   //MOBILE
+                Toast.makeText(this, "当前是移动数据网络是否播放", Toast.LENGTH_SHORT).show();
+
+            }
+        }
     }
 
     /**
@@ -75,11 +106,12 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
             if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 mSuperVideoPlayer.setPageType(MediaController.PageType.SHRINK);
+                view.setVisibility(View.VISIBLE);
 
             } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 mSuperVideoPlayer.setPageType(MediaController.PageType.EXPAND);
-//                mSuperVideoPlayer.goOnPlay();
+                view.setVisibility(View.GONE);
             }
         }
 

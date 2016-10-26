@@ -66,6 +66,7 @@
         <!--地图-->
         <activity android:name=".cinema.map.MapActivity"/>
 
+        <activity android:name=".movie.play.MoviePlayActivity"/>
     </application>
 
 </manifest>

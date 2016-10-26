@@ -20,18 +20,16 @@ import com.yangyuning.maoyan.mode.bean.MovieBean;
 import com.yangyuning.maoyan.movie.area.AreaActivity;
 import com.yangyuning.maoyan.movie.area.VolleyInstance;
 import com.yangyuning.maoyan.movie.area.VolleyResult;
-import com.yangyuning.maoyan.movie.play.MoviePlayFragment;
+import com.yangyuning.maoyan.movie.play.MoviePlayActivity;
 import com.yangyuning.maoyan.movie.zxing.activity.CaptureActivity;
 import com.yangyuning.maoyan.utils.CardUtils;
 import com.yangyuning.maoyan.utils.MaoYanValue;
 import com.yangyuning.maoyan.views.CardView;
-import com.yangyuning.maoyan.views.RefreshListView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,7 +44,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
     private TextView areatTv, titleTv;
     private ImageView qRCode; //二维码
     private static final int PHOTO_PIC = 1;
-    private MoviePlayFragment frag;
+//    private MoviePlayFragment frag;
     private CardView cardView;
     private List<MovieBean.DataBean.HotBean> datas;
 
@@ -88,16 +86,10 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         qRCode = byView(R.id.title_bar_iv_share);
 //        movieListview = byView(R.id.movie_lv);
         cardView = byView(R.id.movie_card);
-
-
     }
 
     @Override
     protected void initDatas() {
-        //注册
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
         //标题栏
         intiTitleBar();
         //点击事件
@@ -105,9 +97,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         //获取网络数据
         getNetDatas();
 //        movieListview.setOnRefreshListener(this);
-
     }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getData(String area) {
@@ -203,19 +193,22 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         CardViewAdapter adapter = new CardViewAdapter(context);
         adapter.addAll(datas);
         cardView.setAdapter(adapter);
-        frag = new MoviePlayFragment();
-        FragmentManager manager = getChildFragmentManager();
-        manager.beginTransaction().replace(R.id.movie_replace, frag).commit();
+//        frag = new MoviePlayFragment();
+//        FragmentManager manager = getChildFragmentManager();
+//        manager.beginTransaction().replace(R.id.movie_replace, frag).commit();
     }
 
 
     //cardView点击事件
     @Override
     public void onCardClick(View view, int position) {
-        Bundle bundle = new Bundle();
-        //传递数据
-        bundle.putString("text", datas.get(position % datas.size()).getNm());
-        frag.show(view, bundle);
+//        Bundle bundle = new Bundle();
+//        //传递数据
+//        bundle.putString("text", datas.get(position % datas.size()).getNm());
+//        frag.show(view, bundle);
+
+        context.startActivity(new Intent(context, MoviePlayActivity.class));
+        getActivity().overridePendingTransition(R.anim.movie_play_rotate, R.anim.movie_play_rotate);
     }
 
     //cardView的适配器

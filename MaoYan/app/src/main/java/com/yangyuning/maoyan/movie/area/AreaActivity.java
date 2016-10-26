@@ -48,7 +48,6 @@ public class AreaActivity extends AbsBaseActivity {
 
 //    private GestureHelper gestureHelper;
 
-
     @Override
     protected int setLayout() {
         return R.layout.activity_area;
@@ -130,7 +129,6 @@ public class AreaActivity extends AbsBaseActivity {
                 if(position != -1){
                     sortListView.setSelection(position);
                 }
-
             }
         });
 
@@ -145,7 +143,6 @@ public class AreaActivity extends AbsBaseActivity {
         });
 
         SourceDateList = filledData(SourceDateList);
-
         Collections.sort(SourceDateList, pinyinComparator);
         adapter = new SortAdapter(this, SourceDateList);
         sortListView.setAdapter(adapter);

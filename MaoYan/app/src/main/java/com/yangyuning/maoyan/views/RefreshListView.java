@@ -112,18 +112,18 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
         state = DONE;
         isEnd = true;
         isRefreable = false;
-
-
     }
 
     @Override
     public void onScrollStateChanged(AbsListView absListView, int i) {
     }
-    boolean haveFinish = true;
+
     @Override
     public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         mFirstVisibleItem = firstVisibleItem;
     }
+
+    private boolean moved = false;
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -142,7 +142,6 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
                         break;
                     //用户滑动
                     case MotionEvent.ACTION_MOVE:
-                        haveFinish = true;
                         //再次得到y坐标，用来和startY相减来计算offsetY位移值
                         float tempY = ev.getY();
                         //再起判断一下是否为listview顶部并且没有记录y坐标
@@ -218,17 +217,20 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
                                 headView.setPadding(0, (int) (-headViewHeight + offsetY / RATIO), 0, 0);
                             }
                         }
+
+                        if (offsetY > 0 ){
+                            moved = true;
+                        }
                         break;
                     //当用户手指抬起时
                     case MotionEvent.ACTION_UP:
                         //如果当前状态为下拉刷新状态
                         if (state == PULL_TO_REFRESH) {
-                            if(haveFinish){
-                                //平滑的隐藏headerView
+                            //平滑的隐藏headerView
+                            if (moved) {
                                 this.smoothScrollBy((int) (-headViewHeight + offsetY / RATIO) + headViewHeight, 500);
                             }
                             //根据状态改变headerView
-                            offsetY = 0;
                             changeHeaderByState(state);
                         }
                         //如果当前状态为放开刷新
@@ -244,7 +246,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
                         }
                         //这一套手势执行完，一定别忘了将记录y坐标的isRecord改为false，以便于下一次手势的执行
                         isRecord = false;
-                        haveFinish = false;
+                        moved = false;
                         break;
                 }
 

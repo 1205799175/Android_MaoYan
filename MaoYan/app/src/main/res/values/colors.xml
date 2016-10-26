@@ -54,8 +54,15 @@
     <color name="title_bar_bg">#ff3333</color>
     <color name="title_bar_tv_color">#fff</color>
 
+<<<<<<< HEAD
 
     <!--地图-->
     <color name="red">#FF0000</color>
     <color name="darkgrey">#C0C0C0</color>
+=======
+    <!--地图-->
+    <color name="red">#FF0000</color>
+    <color name="darkgrey">#C0C0C0</color>
+    <color name="cinema_price">#ec140d</color>
+>>>>>>> a82a71aefb55734280e9c551b58daaf706dd4e1e
 </resources>

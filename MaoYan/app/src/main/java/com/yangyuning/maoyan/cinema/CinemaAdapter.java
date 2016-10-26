@@ -8,18 +8,15 @@ import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseAdapter;
 import com.yangyuning.maoyan.mode.bean.CinemaBean;
 
-import java.util.List;
-
 /**
  * Created by dllo on 16/10/20.
  * 影院适配器
  *
  * @author 姜鑫
  */
-public class CinemaAdapter extends AbsBaseAdapter<String, CinemaAdapter.CinemaViewHolder> {
+public class CinemaAdapter extends AbsBaseAdapter<CinemaBean, CinemaAdapter.CinemaViewHolder> {
 
     public CinemaAdapter(Context context) {
-
         super(context);
     }
 
@@ -35,18 +32,20 @@ public class CinemaAdapter extends AbsBaseAdapter<String, CinemaAdapter.CinemaVi
     }
 
     @Override
-    protected void onBindViewHolder(CinemaViewHolder cinemaViewHolder, String itemData, int position) {
-        cinemaViewHolder.textView.setText(itemData);
+    protected void onBindViewHolder(CinemaViewHolder cinemaViewHolder, CinemaBean itemData, int position) {
+        cinemaViewHolder.nameTv.setText(itemData.getName());
+        cinemaViewHolder.privceTv.setText(itemData.getPrice());
+        cinemaViewHolder.addressTv.setText(itemData.getAddr());
     }
 
     class CinemaViewHolder extends AbsBaseAdapter.BaseHolder {
 
-        TextView textView;
-//        ImageView imageView;
+        TextView nameTv, privceTv, addressTv;
         public CinemaViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.item_name);
-//            imageView = (ImageView) itemView.findViewById(R.id.cinema_listener);
+            nameTv = (TextView) itemView.findViewById(R.id.item_name);
+            privceTv = (TextView) itemView.findViewById(R.id.item_price);
+            addressTv = (TextView) itemView.findViewById(R.id.item_address);
         }
     }
 

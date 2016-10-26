@@ -18,8 +18,6 @@ import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.mode.bean.AreaBean;
-import com.yangyuning.maoyan.movie.MovieFragment;
-import com.yangyuning.maoyan.utils.GestureHelper;
 import com.yangyuning.maoyan.utils.MaoYanValue;
 
 import org.greenrobot.eventbus.EventBus;

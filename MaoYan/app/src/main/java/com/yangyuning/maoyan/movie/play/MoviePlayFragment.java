@@ -71,7 +71,6 @@ public class MoviePlayFragment extends Fragment{
                 .setDuration(300).setListener(null)
                 .setInterpolator(new AccelerateInterpolator());
 
-
         ViewPropertyAnimator.animate(root)
                 .rotationY(0).setDuration(200).setStartDelay(300)
                 .setListener(new AnimatorListenerAdapter() {

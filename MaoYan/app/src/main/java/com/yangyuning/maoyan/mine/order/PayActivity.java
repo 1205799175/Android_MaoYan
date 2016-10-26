@@ -1,13 +1,17 @@
 package com.yangyuning.maoyan.mine.order;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.mode.bean.PayBean;
 import com.yangyuning.maoyan.mode.db.LiteOrmInstance;
+import com.yangyuning.maoyan.utils.GestureHelper;
+import com.yangyuning.maoyan.views.SwipeListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +23,8 @@ public class PayActivity extends AbsBaseActivity {
 
     private PayLvAdapter payAdapter;
     private List<PayBean> datas;
-    private ListView listView;
+    private SwipeListView listView;
+    private GestureHelper gestureHelper;
 
     @Override
     protected int setLayout() {
@@ -36,10 +41,48 @@ public class PayActivity extends AbsBaseActivity {
         //初始化标题栏
         initTitlebar();
         datas = new ArrayList<>();
-        payAdapter = new PayLvAdapter(this);
+        initListView();
+
+        //手势滑动退出
+        gestuerBack();
+    }
+
+    private void gestuerBack() {
+        gestureHelper = new GestureHelper(this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+            @Override
+            public void OnFlingLeft() {
+                Toast.makeText(PayActivity.this, "a", Toast.LENGTH_SHORT).show();
+                PayActivity.this.finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+            }
+
+            @Override
+            public void OnFlingRight() {
+
+            }
+        });
+    }
+
+    private void initListView() {
+        payAdapter = new PayLvAdapter(this, listView.getRightViewWidth());
+        //获取数据库的数据
         datas = LiteOrmInstance.getLiteOrmInstance().queryAll();
+        //给适配器设置数据
         payAdapter.setDatas(datas);
         listView.setAdapter(payAdapter);
+        //侧滑删除
+        payAdapter.setmListener(new PayLvAdapter.IOnItemRightClickListener() {
+            @Override
+            public void onRightClick(View v, int position) {
+                datas = LiteOrmInstance.getLiteOrmInstance().queryAll();
+                if (datas != null) {
+                    LiteOrmInstance.getLiteOrmInstance().deleteByTitle(datas.get(position).getTitle());
+                    payAdapter.setDatas(LiteOrmInstance.getLiteOrmInstance().queryAll());
+                }
+            }
+        });
     }
 
     private void initTitlebar() {

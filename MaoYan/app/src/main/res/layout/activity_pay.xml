@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--我的-待付款-->
     <include layout="@layout/layout_title_bar"/>
 
-    <ListView
+    <com.yangyuning.maoyan.views.SwipeListView
         android:id="@+id/mine_order_pay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

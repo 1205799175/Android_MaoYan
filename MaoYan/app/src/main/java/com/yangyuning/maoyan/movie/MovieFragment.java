@@ -45,28 +45,9 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
     private TextView areatTv, titleTv;
     private ImageView qRCode; //二维码
     private static final int PHOTO_PIC = 1;
-//    private MoviePlayFragment frag;
     private CardView cardView;
     private List<MovieBean.DataBean.HotBean> datas;
 
-    /**
-     * 刷新视图
-     */
-//    private Handler mHandler = new Handler() {
-//        public void handleMessage(android.os.Message msg) {
-//            switch (msg.what) {
-//                case REFRESH_COMPLETE:
-//                    movieListview.setOnRefreshComplete();
-////                    movieAdapter.setDatas(date);
-//                    movieAdapter.notifyDataSetChanged();
-//                    movieListview.setSelection(0);
-//                    break;
-//
-//                default:
-//                    break;
-//            }
-//        }
-//    };
     public static MovieFragment newInstance() {
         Bundle args = new Bundle();
         MovieFragment fragment = new MovieFragment();
@@ -91,6 +72,11 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
 
     @Override
     protected void initDatas() {
+        //注册
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+
         //标题栏
         intiTitleBar();
         //点击事件
@@ -167,25 +153,6 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         }
     }
 
-    /**
-     * 刷新添加数据
-     */
-//    @Override
-//    public void onRefresh() {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Thread.sleep(3000);
-////                    date.add(0, "我家有一只凤尾蝶");
-//                    mHandler.sendEmptyMessage(REFRESH_COMPLETE);
-//                } catch (InterruptedException e) {
-//                    // TODO Auto-generated catch block
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
-//    }
     private void initUi() {
         cardView.setOnCardClickListener(this);
         //设置cardView的上下长度大小(根绝屏幕的物理尺寸)

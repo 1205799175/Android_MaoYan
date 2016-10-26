@@ -28,6 +28,17 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!--支付相关-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    <uses-permission android:name="android.permission.NFC" />
+    <!---->
+    <uses-feature android:name="android.hardware.nfc.hce" />
 
     <application
         android:name=".app.MaoYanApp"
@@ -70,6 +81,38 @@
         <activity android:name=".movie.play.MoviePlayActivity"/>
         <!--我的-订单-待付款-->
         <activity android:name=".mine.order.PayActivity"/>
+        <!--支付-->
+        <activity
+            android:name=".mine.order.NormalActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mine.order.CustomRSAPayActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 付钱拉 SDK -->
+        <activity
+            android:name="com.fuqianla.paysdk.app.FuQianLaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="ONEPAY_APPKEY"
+            android:value="bm5ZHRTdvb89KYD1B6xg0Q" />
+
+        <!-- 支付宝 sdk -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+
+        <!-- 银联支付 -->
+        <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false" />
     </application>
 
 </manifest>

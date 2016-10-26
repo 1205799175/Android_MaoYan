@@ -53,4 +53,28 @@
     <string name="have_add_one">已添加一张</string>
     <string name="to_payment">至待付款</string>
     <string name="yuan">元</string>
+
+
+    <!--下面是支付-->
+    <string name="order">订单</string>
+    <string name="commodity">商品</string>
+    <string name="amount">总金额</string>
+    <string name="details">商品详情</string>
+    <string name="payment">支付</string>
+    <string name="notify_url">notifyUrl</string>
+    <string name="input_commodity">请输入商品名称</string>
+    <string name="input_amount">请输入总金额</string>
+    <string name="input_details">请输入商品详情</string>
+    <string name="input_notify_url">请输入notifyUrl</string>
+    <string name="normal_model">正常模式</string>
+    <string name="front_model_activity">前置模式Activity</string>
+    <string name="front_model_dialog">前置模式Dialog</string>
+    <string name="custom_rsa">自定义RSA</string>
+    <string name="alipay">支付宝</string>
+    <string name="wxpay">微信支付</string>
+    <string name="bdpay">百度钱包</string>
+    <string name="unionpay">银联支付</string>
+    <string name="jdpay">京东钱包</string>
+
+
 </resources>

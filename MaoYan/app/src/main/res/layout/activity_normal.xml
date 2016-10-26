@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:drawableLeft="@mipmap/fql_shopping_basket"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"
+        android:text="@string/order"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_commodity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_order"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_commodity"
+            style="@style/OrderTvStyle"
+            android:text="@string/commodity" />
+
+        <EditText
+            android:id="@+id/et_commodity"
+            style="@style/OrderEtStyle"
+            android:hint="@string/input_commodity" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_commodity"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_details"
+            style="@style/OrderTvStyle"
+            android:text="@string/details" />
+
+        <EditText
+            android:id="@+id/et_details"
+            style="@style/OrderEtStyle"
+            android:hint="@string/input_details" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_details"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_amount"
+            style="@style/OrderTvStyle"
+            android:text="@string/amount" />
+
+        <EditText
+            android:id="@+id/et_amount"
+            style="@style/OrderEtStyle"
+            android:hint="@string/input_amount"
+            android:inputType="numberDecimal" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_pay"
+        style="@style/PayBtnStyle"
+        android:layout_alignParentBottom="true"
+        android:text="@string/payment" />
+
+</RelativeLayout>

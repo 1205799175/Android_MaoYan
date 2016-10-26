@@ -27,7 +27,7 @@ public abstract class AbsBaseActivity extends AutoLayoutActivity{
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         //Color.parseColor 将不是int类型的颜色转为int类型
         //为状态栏添加新的颜色
-        window.setStatusBarColor(Color.parseColor("#ff3333"));
+//        window.setStatusBarColor(Color.parseColor("#ff3333"));
 
         //设置布局
         setContentView(setLayout());

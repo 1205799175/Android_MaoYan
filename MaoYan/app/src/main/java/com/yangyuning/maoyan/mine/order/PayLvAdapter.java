@@ -1,6 +1,7 @@
 package com.yangyuning.maoyan.mine.order;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,13 +10,15 @@ import android.widget.Toast;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseAdapter;
 import com.yangyuning.maoyan.mode.bean.PayBean;
+import com.yangyuning.maoyan.movie.area.AreaActivity;
 
 /**
  * Created by dllo on 16/10/26.
  * 我的-待付款lv适配器
+ *
  * @author 杨宇宁
  */
-public class PayLvAdapter extends AbsBaseAdapter<PayBean, PayLvAdapter.PayViewHolder>{
+public class PayLvAdapter extends AbsBaseAdapter<PayBean, PayLvAdapter.PayViewHolder> {
 
     public PayLvAdapter(Context context) {
         super(context);
@@ -39,7 +42,10 @@ public class PayLvAdapter extends AbsBaseAdapter<PayBean, PayLvAdapter.PayViewHo
         payViewHolder.payIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "itemData.getPrice():" + itemData.getPrice(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, NormalActivity.class);
+                intent.putExtra(NormalActivity.KEY_PAY_GOODS, itemData.getTitle());
+                intent.putExtra(NormalActivity.KEY_PAY_PRICE, itemData.getPrice());
+                context.startActivity(intent);
             }
         });
     }
@@ -48,6 +54,7 @@ public class PayLvAdapter extends AbsBaseAdapter<PayBean, PayLvAdapter.PayViewHo
 
         TextView titleTv, privceTv;
         ImageView payIv;
+
         public PayViewHolder(View itemView) {
             super(itemView);
             titleTv = (TextView) itemView.findViewById(R.id.item_pay_title);

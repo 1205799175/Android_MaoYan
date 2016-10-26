@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tedcoder.wkvideoplayer.util.DensityUtil;
@@ -24,7 +25,8 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
     private SuperVideoPlayer mSuperVideoPlayer;
     private View mPlayBtnView;
     private String url;
-    private TextView nameTv, foreTv,dirTv,descTv,catTv,timeTv;
+    private TextView nameTv, foreTv, dirTv, descTv, catTv, timeTv;
+    private LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,6 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         descTv = (TextView) findViewById(R.id.move_desc);
         catTv = (TextView) findViewById(R.id.move_cat);
         timeTv = (TextView) findViewById(R.id.move_time);
-        mPlayBtnView.setOnClickListener(this);
-        mSuperVideoPlayer.setVideoPlayCallback(mVideoPlayCallback);
         Intent intent = getIntent();
         url = intent.getStringExtra("move");
         nameTv.setText(intent.getStringExtra("name"));
@@ -48,6 +48,8 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         descTv.setText(intent.getStringExtra("desc"));
         catTv.setText("影片类型: " + intent.getStringExtra("cat"));
         timeTv.setText("大陆上映: " + intent.getStringExtra("time"));
+        mPlayBtnView.setOnClickListener(this);
+        mSuperVideoPlayer.setVideoPlayCallback(mVideoPlayCallback);
     }
 
     /**
@@ -73,9 +75,11 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
             if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 mSuperVideoPlayer.setPageType(MediaController.PageType.SHRINK);
+
             } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 mSuperVideoPlayer.setPageType(MediaController.PageType.EXPAND);
+//                mSuperVideoPlayer.goOnPlay();
             }
         }
 
@@ -95,7 +99,7 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         mSuperVideoPlayer.setAutoHideController(false);
         Uri uri = Uri.parse(url);
         //参数1:播放网址
-        mSuperVideoPlayer.loadAndPlay(uri,0);
+        mSuperVideoPlayer.loadAndPlay(uri, 0);
     }
 
     /***

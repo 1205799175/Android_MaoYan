@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10px"
+        android:maxLines="1"
         android:textSize="@dimen/cinema_price_size"
         android:text="地址" />
 

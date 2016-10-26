@@ -49,8 +49,6 @@
     <string name="intell_bd_title">智能播报</string>
     <string name="app_id">11111111</string>
     <string name="no_result">对不起，没有搜索到相关数据！</string>
-<<<<<<< HEAD
-=======
+
     <string name="cinema_price_start">元起</string>
->>>>>>> a82a71aefb55734280e9c551b58daaf706dd4e1e
 </resources>

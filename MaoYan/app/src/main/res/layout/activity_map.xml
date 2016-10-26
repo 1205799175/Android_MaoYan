@@ -29,13 +29,9 @@
             android:layout_marginTop="@dimen/map_rl_margin"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
-<<<<<<< HEAD
 
         </RelativeLayout>
-=======
-        </RelativeLayout>
 
->>>>>>> a82a71aefb55734280e9c551b58daaf706dd4e1e
     <RadioGroup
         android:id="@+id/gps_radio_group"
         android:layout_width="wrap_content"

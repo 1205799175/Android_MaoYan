@@ -199,7 +199,7 @@ public class MapActivity extends AppCompatActivity implements PoiSearch.OnPoiSea
      */
     protected void doSearchQuery() {
         Intent intent = getIntent();
-        keyWord = intent.getStringExtra("move");
+        keyWord = intent.getStringExtra(KEY_ADDTESS);
 //        keyWord = "大连市沙河口区中山路673号福利庭生活广场3F";
         currentPage = 0;
         query = new PoiSearch.Query(keyWord, "", "");// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）

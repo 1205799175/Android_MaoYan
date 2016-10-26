@@ -3,7 +3,6 @@ package com.yangyuning.maoyan.cinema;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -12,10 +11,7 @@ import android.widget.TextView;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.cinema.map.MapActivity;
-<<<<<<< HEAD
-=======
 import com.yangyuning.maoyan.mode.bean.CinemaBean;
->>>>>>> a82a71aefb55734280e9c551b58daaf706dd4e1e
 import com.yangyuning.maoyan.views.RefreshListView;
 
 import java.io.InputStream;
@@ -36,10 +32,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
     private ImageView areaIv, searchIv;
     private RefreshListView listView;
     private CinemaAdapter cinemaAdapter;
-<<<<<<< HEAD
-    private TextView textView;
-=======
->>>>>>> a82a71aefb55734280e9c551b58daaf706dd4e1e
+
     private final static int REFRESH_COMPLETE = 0;
     private List<CinemaBean> datas;
     /**
@@ -60,10 +53,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
             }
         }
     };
-<<<<<<< HEAD
-    private List<String> datas;
-=======
->>>>>>> a82a71aefb55734280e9c551b58daaf706dd4e1e
+
 
     public static CinemaFragment newInstance() {
         Bundle args = new Bundle();
@@ -112,8 +102,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         listView.setAdapter(cinemaAdapter);
         listView.setOnRefreshListener(this);
         initTitleBar();
-<<<<<<< HEAD
-=======
+
     }
 
     private void getExcelData() {
@@ -133,7 +122,6 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
             book.close();
         } catch (Exception e) {
         }
->>>>>>> a82a71aefb55734280e9c551b58daaf706dd4e1e
     }
 
     private void initTitleBar() {

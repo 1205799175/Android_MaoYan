@@ -6,7 +6,8 @@ import android.widget.Toast;
 import com.amap.api.services.core.AMapException;
 
 /**
- * Created by dllo on 16/10/24.
+ * 地图界面
+ * @author 姜鑫
  */
 public class ToastUtil {
     public static void show(Context context, String info) {

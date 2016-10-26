@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -210,8 +207,17 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
 //        //传递数据
 //        bundle.putString("text", datas.get(position % datas.size()).getNm());
 //        frag.show(view, bundle);
+          Intent intent = new Intent(context, MoviePlayActivity.class);
+          intent.putExtra("move",datas.get(position%datas.size()).getVideourl());
+          intent.putExtra("name",datas.get(position%datas.size()).getNm());
+          intent.putExtra("fore",datas.get(position%datas.size()).getVideoName());
+          intent.putExtra("dir",datas.get(position%datas.size()).getDir());
+          intent.putExtra("desc",datas.get(position%datas.size()).getDesc());
+          intent.putExtra("cat",datas.get(position%datas.size()).getCat());
+          intent.putExtra("time",datas.get(position%datas.size()).getShowTimeInfo());
 
-        context.startActivity(new Intent(context, MoviePlayActivity.class));
+          context.startActivity(intent);
+
         getActivity().overridePendingTransition(R.anim.movie_play_rotate, R.anim.movie_play_rotate);
     }
 

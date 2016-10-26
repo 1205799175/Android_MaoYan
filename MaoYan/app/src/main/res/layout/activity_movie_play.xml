@@ -1,11 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d9d9d9"
+        android:minHeight="200dp">
+
+        <ImageView
+            android:id="@+id/play_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/biz_video_list_play_icon_big"/>
+
+        <com.android.tedcoder.wkvideoplayer.view.SuperVideoPlayer
+            android:id="@+id/video_player_item_1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone">
+        </com.android.tedcoder.wkvideoplayer.view.SuperVideoPlayer>
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/move_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="惊天破"
+            android:textSize="25sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/move_fore_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="终级预告片"
+            android:textSize="15sp"
+            android:textColor="#000"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/move_dir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="导演: 吴品儒"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/move_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="主演: 谢霆锋,刘青云,佟丽娅"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/move_cat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="类型: 动作,犯罪,剧情"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/move_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="大陆上映时间:2016-10-23"
+        android:textSize="18sp"
+        android:layout_margin="5dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="111111"/>
+        android:layout_margin="5dp"
+        android:textSize="18sp"
+        android:text="影片简介:"/>
+
 
 </LinearLayout>

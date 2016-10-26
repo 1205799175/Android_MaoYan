@@ -3,11 +3,9 @@ package com.yangyuning.maoyan.cinema;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yangyuning.maoyan.R;
@@ -39,6 +37,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
     private ImageView areaIv, searchIv;
     private RefreshListView listView;
     private CinemaAdapter cinemaAdapter;
+
     private final static int REFRESH_COMPLETE = 0;
     private List<CinemaBean> datas;
     /**
@@ -59,6 +58,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
             }
         }
     };
+
 
     public static CinemaFragment newInstance() {
         Bundle args = new Bundle();
@@ -96,6 +96,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         listView.setAdapter(cinemaAdapter);
         listView.setOnRefreshListener(this);
         initTitleBar();
+
         initListener();
     }
 

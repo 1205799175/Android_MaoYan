@@ -29,6 +29,7 @@
             android:layout_marginTop="@dimen/map_rl_margin"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
+
         </RelativeLayout>
 
     <RadioGroup
@@ -45,6 +46,7 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="定位"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:visibility="gone"/>
     </RadioGroup>
 </RelativeLayout>

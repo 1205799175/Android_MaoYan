@@ -204,6 +204,7 @@ public class SuperVideoPlayer extends RelativeLayout {
         mVideoView.pause();
         mVideoView.stopPlayback();
         mVideoView.setVisibility(GONE);
+
     }
 
     /**

@@ -46,7 +46,7 @@ public class NormalActivity extends AppCompatActivity implements View.OnClickLis
         int payPrice = intent.getIntExtra("payPrice", 0);
 
         etCommodity.setText(payGoods);
-        etDetails.setText("正常模式-支付详情");
+        etDetails.setText(payGoods);
         etAmount.setText(payPrice + "");
     }
 

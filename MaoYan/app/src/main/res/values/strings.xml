@@ -76,6 +76,12 @@
     <string name="bdpay">百度钱包</string>
     <string name="unionpay">银联支付</string>
     <string name="jdpay">京东钱包</string>
+    <string name="play_dec">导演: </string>
+    <string name="play_kinds">影片类型: </string>
+    <string name="play_in_china">大陆上映: </string>
+    <string name="have_no_net">当前无网络连接</string>
+    <string name="wifi">当前是无线网络状态</string>
+    <string name="data">当前是移动数据网络是否播放</string>
 
 
 </resources>

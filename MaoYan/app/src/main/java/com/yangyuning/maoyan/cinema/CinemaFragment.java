@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.yangyuning.maoyan.R;
@@ -13,6 +14,7 @@ import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.cinema.map.MapActivity;
 import com.yangyuning.maoyan.mode.bean.CinemaBean;
 import com.yangyuning.maoyan.movie.area.AreaActivity;
+import com.yangyuning.maoyan.utils.ThreadInstance;
 import com.yangyuning.maoyan.views.RefreshListView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,9 +31,10 @@ import jxl.Workbook;
 /**
  * Created by dllo on 16/10/18.
  * 影院Fragment
+ *
  * @author 杨宇宁 10.18
  */
-public class CinemaFragment extends AbsBaseFragment implements RefreshListView.OnRefreshListener{
+public class CinemaFragment extends AbsBaseFragment implements RefreshListView.OnRefreshListener {
 
     private TextView areaTv, titleTv;
     private ImageView areaIv, searchIv;
@@ -40,6 +43,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
 
     private final static int REFRESH_COMPLETE = 0;
     private List<CinemaBean> datas;
+
     /**
      * 刷新视图
      */
@@ -52,7 +56,6 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
                     cinemaAdapter.notifyDataSetChanged();
                     listView.setSelection(0);
                     break;
-
                 default:
                     break;
             }
@@ -112,7 +115,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context,MapActivity.class);
+                Intent intent = new Intent(context, MapActivity.class);
                 intent.putExtra(MapActivity.KEY_ADDTESS, datas.get(position - 1).getAddr());
                 context.startActivity(intent);
             }
@@ -150,6 +153,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         searchIv.setImageResource(R.mipmap.title_bar_search);
         areaIv.setImageResource(R.mipmap.title_bar_erea);
     }
+
     /**
      * 刷新添加数据
      */

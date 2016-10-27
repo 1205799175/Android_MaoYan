@@ -1,6 +1,9 @@
 package com.yangyuning.maoyan.movie.area;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -10,21 +13,28 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.mode.bean.AreaBean;
+import com.yangyuning.maoyan.mode.net.OkHttpInstance;
+import com.yangyuning.maoyan.utils.GestureHelper;
 import com.yangyuning.maoyan.utils.MaoYanValue;
+import com.yangyuning.maoyan.utils.ThreadInstance;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * 城市Activity
@@ -46,7 +56,8 @@ public class AreaActivity extends AbsBaseActivity {
     private ImageView backIv;
     private EventBus eventBus;
 
-//    private GestureHelper gestureHelper;
+    private ProgressBar progressBar;
+    private GestureHelper gestureHelper;
 
     @Override
     protected int setLayout() {
@@ -60,30 +71,12 @@ public class AreaActivity extends AbsBaseActivity {
         sortListView = byView(R.id.country_lvcountry);
         mClearEditText = byView(R.id.filter_edit);
         backIv = byView(R.id.title_bar_iv_left);
+        progressBar = byView(R.id.area_progress_bar);
         //初始化EventBus
         eventBus = EventBus.getDefault();
-
-        //手势退出
-//        gestureHelper = new GestureHelper(this);
-//        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
-//            @Override
-//            public void OnFlingLeft() {
-//                finish();
-//                // 退出动画
-//                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
-//            }
-//
-//            @Override
-//            public void OnFlingRight() {
-//
-//            }
-//        });
+        //解决gesture和ListView的滑动冲突
+        swipeBack();
     }
-
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        return gestureHelper.onTouchEvent(event);
-//    }
 
     @Override
     protected void initDatas() {
@@ -92,18 +85,72 @@ public class AreaActivity extends AbsBaseActivity {
         //点击事件
         initListener();
         SourceDateList = new ArrayList<>();
-        VolleyInstance.getInstance().startResult(MaoYanValue.AREA, new VolleyResult() {
+
+        //获取网络数据
+        getNetData();
+        //手势退出
+        gestureBack();
+    }
+
+    private void swipeBack() {
+        SwipeBackHelper.onCreate(this); // 手势相关
+        SwipeBackHelper.getCurrentPage(this)//获取当前页面
+                .setSwipeBackEnable(true)//设置是否可滑动
+                .setSwipeEdge(200)//可滑动的范围。px。200表示为左边200px的屏幕
+                .setSwipeEdgePercent(0.2f)//可滑动的范围。百分比。0.2表示为左边20%的屏幕
+                .setSwipeSensitivity(0.5f)//对横向滑动手势的敏感程度。0为迟钝 1为敏感
+                .setClosePercent(0.8f)//触发关闭Activity百分比
+                .setSwipeRelateEnable(true)//是否与下一级activity联动(微信效果)。默认关
+                .setSwipeRelateOffset(500)//activity联动时的偏移量。默认500px。
+                .setDisallowInterceptTouchEvent(false);//不抢占事件，默认关（事件将先由子View处理再由滑动关闭处理）
+    }
+
+    private void gestureBack() {
+        gestureHelper = new GestureHelper(this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
             @Override
-            public void success(String resultStr) {
-                Gson gson = new Gson();
-                AreaBean bean = gson.fromJson(resultStr, AreaBean.class);
-                SourceDateList = bean.getCts();
-                initViews();
+            public void OnFlingLeft() {
+                finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
             }
 
             @Override
-            public void failure() {
+            public void OnFlingRight() {
 
+            }
+        });
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureHelper.onTouchEvent(event);
+    }
+
+    private void getNetData() {
+        ThreadInstance.getInstance().startThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                OkHttpInstance.getAsyn(MaoYanValue.AREA, new OkHttpInstance.ResultCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(Object response) {
+                        Gson gson = new Gson();
+                        AreaBean areaBean = gson.fromJson(response.toString(), AreaBean.class);
+                        SourceDateList = areaBean.getCts();
+                        progressBar.setVisibility(View.GONE);
+                        initViews();
+                    }
+                });
             }
         });
     }
@@ -214,5 +261,16 @@ public class AreaActivity extends AbsBaseActivity {
         adapter.updateListView(filterDateList);
     }
 
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        SwipeBackHelper.onPostCreate(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SwipeBackHelper.onDestroy(this);
+    }
 
 }

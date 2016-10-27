@@ -48,6 +48,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
         switch (v.getId()){
             case R.id.order_pay:
                 context.startActivity(new Intent(context, PayActivity.class));
+
                 break;
         }
     }

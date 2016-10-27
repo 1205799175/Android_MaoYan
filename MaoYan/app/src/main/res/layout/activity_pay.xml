@@ -7,7 +7,7 @@
     <!--我的-待付款-->
     <include layout="@layout/layout_title_bar"/>
 
-    <com.yangyuning.maoyan.views.SwipeListView
+    <com.yangyuning.maoyan.mine.order.swipe.SwipeMenuListView
         android:id="@+id/mine_order_pay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

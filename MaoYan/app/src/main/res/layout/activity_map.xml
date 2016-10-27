@@ -6,7 +6,7 @@
         android:id="@+id/main_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="搜索"/>
+        android:text="地图"/>
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"

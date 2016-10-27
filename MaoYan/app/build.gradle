@@ -56,4 +56,5 @@ dependencies {
     compile files('libs/UPPayPluginExPro.jar')
     compile files('libs/walletsdk.jar')
     compile project(':wkvideoplayer')
+    compile files('libs/nineoldandroids-2.4.0.jar')
 }

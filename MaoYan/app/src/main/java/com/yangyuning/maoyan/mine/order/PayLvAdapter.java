@@ -22,22 +22,11 @@ import com.yangyuning.maoyan.mode.bean.PayBean;
  */
 public class PayLvAdapter extends AbsBaseAdapter<PayBean, PayLvAdapter.PayViewHolder> {
 
-    private int mRightWidth = 0;
-    /**
-     * 单击事件监听器
-     */
-    private IOnItemRightClickListener mListener;
 
-    public PayLvAdapter(Context context, int rightWidth) {
+    public PayLvAdapter(Context context) {
         super(context);
-        mRightWidth = rightWidth;
     }
 
-    public void setmListener(IOnItemRightClickListener mListener) {
-        this.mListener = mListener;
-    }
-
-    @Override
     protected int setItemLayout() {
         return R.layout.item_mine_pay_lv;
     }
@@ -49,20 +38,8 @@ public class PayLvAdapter extends AbsBaseAdapter<PayBean, PayLvAdapter.PayViewHo
 
     @Override
     protected void onBindViewHolder(PayViewHolder payViewHolder, final PayBean itemData, final int position) {
-        RadioGroup.LayoutParams lp1 = new RadioGroup.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        payViewHolder.itemLeft.setLayoutParams(lp1);
-        RadioGroup.LayoutParams lp2 = new RadioGroup.LayoutParams(mRightWidth, RelativeLayout.LayoutParams.MATCH_PARENT);
-        payViewHolder.itemRight.setLayoutParams(lp2);
         payViewHolder.titleTv.setText(itemData.getTitle());
         payViewHolder.privceTv.setText(itemData.getPrice() + context.getResources().getString(R.string.yuan));
-        payViewHolder.itemRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListener != null) {
-                    mListener.onRightClick(v, position);
-                }
-            }
-        });
         //点击付款
         payViewHolder.payIv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,19 +55,12 @@ public class PayLvAdapter extends AbsBaseAdapter<PayBean, PayLvAdapter.PayViewHo
     class PayViewHolder extends AbsBaseAdapter.BaseHolder {
         TextView titleTv, privceTv;
         ImageView payIv;
-        RelativeLayout itemLeft,itemRight;
 
         public PayViewHolder(View itemView) {
             super(itemView);
             titleTv = (TextView) itemView.findViewById(R.id.item_pay_title);
             privceTv = (TextView) itemView.findViewById(R.id.item_pay_price);
             payIv = (ImageView) itemView.findViewById(R.id.item_pay_pay_iv);
-            itemLeft = (RelativeLayout) itemView.findViewById(R.id.item_left);
-            itemRight = (RelativeLayout) itemView.findViewById(R.id.item_right);
         }
-    }
-
-    public interface IOnItemRightClickListener {
-        void onRightClick(View v, int position);
     }
 }

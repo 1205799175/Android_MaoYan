@@ -61,16 +61,17 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         mPlayBtnView.setOnClickListener(this);
         mSuperVideoPlayer.setVideoPlayCallback(mVideoPlayCallback);
     }
+
     //判断是否连接网络
     private void internet() {
-        mConnectivity = (ConnectivityManager)getSystemService(this.CONNECTIVITY_SERVICE);
-        mTelephony = (TelephonyManager)this.getSystemService(TELEPHONY_SERVICE);
+        mConnectivity = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+        mTelephony = (TelephonyManager) this.getSystemService(TELEPHONY_SERVICE);
         //检查网络连接
         info = mConnectivity.getActiveNetworkInfo();
 
         if (info == null || !mConnectivity.getBackgroundDataSetting()) {
             Toast.makeText(this, "当前无网络连接", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             int netType = info.getType();
             int netSubtype = info.getSubtype();
 
@@ -95,6 +96,7 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
             mSuperVideoPlayer.close();//关闭VideoView
             mPlayBtnView.setVisibility(View.VISIBLE);
             mSuperVideoPlayer.setVisibility(View.GONE);
+            view.setVisibility(View.VISIBLE);
             resetPageToPortrait();
         }
 

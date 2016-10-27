@@ -12,15 +12,15 @@
     <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!--用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!--用于访问GPS定位-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!--用于读取手机当前的状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -52,21 +52,22 @@
             android:name="com.amap.api.v2.apikey"
             android:value="eb2b3320e3128c221ff26b82d5c8fca6" />
         <!--声明定位服务组件-->
-        <service android:name="com.amap.api.location.APSService"/>
-
-        <activity android:name=".activity.MainActivity">
+        <service android:name="com.amap.api.location.APSService" />
+        <!--欢迎页-->
+        <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!--主页面-->
+        <activity android:name=".activity.MainActivity"/>
         <!--二维码详情-->
         <activity android:name=".movie.zxing.activity.CaptureActivity" />
         <activity android:name=".movie.qrcode.CreateQRCodeActivity" />
         <!--电影 地区详情-->
-        <activity android:name=".movie.area.AreaActivity"/>
+        <activity android:name=".movie.area.AreaActivity" />
 
         <meta-data
             android:name="design_width"
@@ -75,13 +76,14 @@
             android:name="design_height"
             android:value="1280" />
         <!--地图-->
-        <activity android:name=".cinema.map.MapActivity"/>
+        <activity android:name=".cinema.map.MapActivity" />
 
         <!--播放视频-->
-        <activity android:name=".movie.play.MoviePlayActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity
+            android:name=".movie.play.MoviePlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <!--我的-订单-待付款-->
-        <activity android:name=".mine.order.PayActivity"/>
+        <activity android:name=".mine.order.PayActivity" />
         <!--支付-->
         <activity
             android:name=".mine.order.NormalActivity"

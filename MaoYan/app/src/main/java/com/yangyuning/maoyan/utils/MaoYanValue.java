@@ -11,7 +11,7 @@ public class MaoYanValue {
      * 待付款数据库名
      */
     public static final String PAY_DB_NAME = "Pay.db";
-
+    public static final String WINDOW_COLOR = "#ff3333";
     /**
      * 城市Activity 接口
      */

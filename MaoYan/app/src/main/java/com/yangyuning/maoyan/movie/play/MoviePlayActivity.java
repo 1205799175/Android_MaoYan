@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -19,6 +20,8 @@ import com.android.tedcoder.wkvideoplayer.util.DensityUtil;
 import com.android.tedcoder.wkvideoplayer.view.MediaController;
 import com.android.tedcoder.wkvideoplayer.view.SuperVideoPlayer;
 import com.yangyuning.maoyan.R;
+import com.yangyuning.maoyan.base.BaseTitleBar;
+import com.yangyuning.maoyan.utils.GestureHelper;
 
 /**
  * Created by dllo on 16/10/26.
@@ -26,6 +29,13 @@ import com.yangyuning.maoyan.R;
  */
 public class MoviePlayActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String MOVIE_URL = "url";
+    public static final String MOVIE_NAME = "name";
+    public static final String MOVIE_FORE = "fore";
+    public static final String MOVIE_DIR = "dir";
+    public static final String MOVIE_DESC = "desc";
+    public static final String MOVIE_CAT = "cat";
+    public static final String MOVIE_TIME = "time";
     private SuperVideoPlayer mSuperVideoPlayer;
     private View mPlayBtnView;
     private String url;
@@ -34,6 +44,8 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
     private ConnectivityManager mConnectivity;
     private TelephonyManager mTelephony;
     private NetworkInfo info;
+
+    private GestureHelper gestureHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +61,57 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         timeTv = (TextView) findViewById(R.id.move_time);
         view = (RelativeLayout) findViewById(R.id.move_title);
         Intent intent = getIntent();
-        url = intent.getStringExtra("move");
-        nameTv.setText(intent.getStringExtra("name"));
-        foreTv.setText(intent.getStringExtra("fore"));
-        dirTv.setText("导演: " + intent.getStringExtra("dir"));
-        descTv.setText(intent.getStringExtra("desc"));
-        catTv.setText("影片类型: " + intent.getStringExtra("cat"));
-        timeTv.setText("大陆上映: " + intent.getStringExtra("time"));
+        url = intent.getStringExtra(MOVIE_URL);
+        nameTv.setText(intent.getStringExtra(MOVIE_NAME));
+        foreTv.setText(intent.getStringExtra(MOVIE_FORE));
+        dirTv.setText(getResources().getString(R.string.play_dec) + intent.getStringExtra(MOVIE_DIR));
+        descTv.setText(intent.getStringExtra(MOVIE_DESC));
+        catTv.setText(getResources().getString(R.string.play_kinds) + intent.getStringExtra(MOVIE_CAT));
+        timeTv.setText(getResources().getString(R.string.play_in_china) + intent.getStringExtra(MOVIE_TIME));
         //网络判断
         internet();
         mPlayBtnView.setOnClickListener(this);
         mSuperVideoPlayer.setVideoPlayCallback(mVideoPlayCallback);
+
+        //初始化标题栏
+        initTitleBar();
+        //手势退出
+        gestureBack();
     }
 
+    private void gestureBack() {
+        gestureHelper = new GestureHelper(MoviePlayActivity.this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+            @Override
+            public void OnFlingLeft() {
+                MoviePlayActivity.this.finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+            }
+
+            @Override
+            public void OnFlingRight() {
+
+            }
+        });
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureHelper.onTouchEvent(event);
+    }
+
+<<<<<<< HEAD
+=======
+    private void initTitleBar() {
+        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setBackListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoviePlayActivity.this.finish();
+            }
+        });
+    }
+
+>>>>>>> feature/杨宇宁
     //判断是否连接网络
     private void internet() {
         mConnectivity = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
@@ -70,15 +120,20 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         info = mConnectivity.getActiveNetworkInfo();
 
         if (info == null || !mConnectivity.getBackgroundDataSetting()) {
+<<<<<<< HEAD
             Toast.makeText(this, "当前无网络连接", Toast.LENGTH_SHORT).show();
         } else {
+=======
+            Toast.makeText(this, getResources().getString(R.string.have_no_net), Toast.LENGTH_SHORT).show();
+        }else {
+>>>>>>> feature/杨宇宁
             int netType = info.getType();
             int netSubtype = info.getSubtype();
 
             if (netType == ConnectivityManager.TYPE_WIFI) {  //WIFI
-                Toast.makeText(this, "当前是无线网络状态", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.wifi), Toast.LENGTH_SHORT).show();
             } else if (netType == ConnectivityManager.TYPE_MOBILE) {   //MOBILE
-                Toast.makeText(this, "当前是移动数据网络是否播放", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.data), Toast.LENGTH_SHORT).show();
 
             }
         }

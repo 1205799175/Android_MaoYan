@@ -18,6 +18,7 @@
                 android:id="@+id/item_pay_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/camera_margin"
                 android:textSize="@dimen/title_bar_tv_size"
                 android:textColor="@color/text_color_black"
                 android:text="机械师" />
@@ -26,6 +27,7 @@
                 android:id="@+id/item_pay_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/camera_margin"
                 android:textSize="@dimen/cinema_price_size"
                 android:textColor="@color/mine_login_bg"
                 android:text="20" />

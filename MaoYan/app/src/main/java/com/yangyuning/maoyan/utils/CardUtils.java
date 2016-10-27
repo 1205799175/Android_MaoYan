@@ -13,7 +13,6 @@ public class CardUtils {
 	 * 
 	 * @param px
 	 *            A value in px (pixels) unit. Which we need to convert into db
-	 * @param context
 	 *            Context to get resources and device specific display metrics
 	 * @return A float value to represent db equivalent to px value
 	 */

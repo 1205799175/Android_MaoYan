@@ -101,8 +101,6 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         return gestureHelper.onTouchEvent(event);
     }
 
-<<<<<<< HEAD
-=======
     private void initTitleBar() {
         new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setBackListener(new View.OnClickListener() {
             @Override
@@ -112,7 +110,6 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         });
     }
 
->>>>>>> feature/杨宇宁
     //判断是否连接网络
     private void internet() {
         mConnectivity = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
@@ -121,13 +118,8 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         info = mConnectivity.getActiveNetworkInfo();
 
         if (info == null || !mConnectivity.getBackgroundDataSetting()) {
-<<<<<<< HEAD
             Toast.makeText(this, "当前无网络连接", Toast.LENGTH_SHORT).show();
-        } else {
-=======
-            Toast.makeText(this, getResources().getString(R.string.have_no_net), Toast.LENGTH_SHORT).show();
         }else {
->>>>>>> feature/杨宇宁
             int netType = info.getType();
             int netSubtype = info.getSubtype();
 

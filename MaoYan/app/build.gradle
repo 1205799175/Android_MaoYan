@@ -57,4 +57,7 @@ dependencies {
     compile files('libs/walletsdk.jar')
     compile project(':wkvideoplayer')
     compile files('libs/nineoldandroids-2.4.0.jar')
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile files('libs/universal-image-loader-1.9.5.jar')
+    compile 'com.jude:swipebackhelper:3.0.4'
 }

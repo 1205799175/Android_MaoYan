@@ -6,7 +6,16 @@
     android:background="#3b2a22">
     <!--电影-->
 
-    <include layout="@layout/layout_title_bar"/>
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/layout_title_bar"/>
+
+    <ProgressBar
+        android:id="@+id/movie_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_bar"
+        android:layout_centerHorizontal="true"/>
 
     <com.yangyuning.maoyan.views.CardView
         android:id="@+id/movie_card"

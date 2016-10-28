@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.yangyuning.maoyan.utils.MaoYanValue;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 /**
@@ -27,7 +27,7 @@ public abstract class AbsBaseActivity extends AutoLayoutActivity{
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         //Color.parseColor 将不是int类型的颜色转为int类型
         //为状态栏添加新的颜色
-//        window.setStatusBarColor(Color.parseColor("#ff3333"));
+        window.setStatusBarColor(Color.parseColor(MaoYanValue.WINDOW_COLOR));
 
         //设置布局
         setContentView(setLayout());

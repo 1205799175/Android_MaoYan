@@ -8,8 +8,6 @@
         android:id="@+id/move_title"
         layout="@layout/layout_title_bar"/>
 
-    <include layout="@layout/layout_title_bar" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

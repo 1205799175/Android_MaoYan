@@ -73,6 +73,7 @@ public class MainActivity extends AbsBaseActivity {
         vpAdapter.setFragments(fragments);
         mainVp.setAdapter(vpAdapter);
         mainTb.setupWithViewPager(mainVp);
+        mainVp.setOffscreenPageLimit(0);
     }
 
     private void intiFragment() {

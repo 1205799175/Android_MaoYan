@@ -1,14 +1,17 @@
 package com.yangyuning.maoyan.movie;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +21,7 @@ import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.mode.bean.MovieBean;
 import com.yangyuning.maoyan.mode.bean.PayBean;
 import com.yangyuning.maoyan.mode.db.LiteOrmInstance;
+import com.yangyuning.maoyan.mode.net.OkHttpInstance;
 import com.yangyuning.maoyan.movie.area.AreaActivity;
 import com.yangyuning.maoyan.movie.area.VolleyInstance;
 import com.yangyuning.maoyan.movie.area.VolleyResult;
@@ -25,13 +29,17 @@ import com.yangyuning.maoyan.movie.play.MoviePlayActivity;
 import com.yangyuning.maoyan.movie.zxing.activity.CaptureActivity;
 import com.yangyuning.maoyan.utils.CardUtils;
 import com.yangyuning.maoyan.utils.MaoYanValue;
+import com.yangyuning.maoyan.utils.ThreadInstance;
 import com.yangyuning.maoyan.views.CardView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONArray;
 
 import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * Created by dllo on 16/10/18.
@@ -47,6 +55,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
     private static final int PHOTO_PIC = 1;
     private CardView cardView;
     private List<MovieBean.DataBean.HotBean> datas;
+    private ProgressBar progressBar;
 
     public static MovieFragment newInstance() {
         Bundle args = new Bundle();
@@ -66,8 +75,8 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         areatTv = byView(R.id.title_bar_tv_left);
         titleTv = byView(R.id.title_bar_tv);
         qRCode = byView(R.id.title_bar_iv_share);
-//        movieListview = byView(R.id.movie_lv);
         cardView = byView(R.id.movie_card);
+        progressBar = byView(R.id.movie_progress_bar);
     }
 
     @Override
@@ -76,14 +85,12 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-
         //标题栏
         intiTitleBar();
         //点击事件
         initListener();
         //获取网络数据
         getNetDatas();
-//        movieListview.setOnRefreshListener(this);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -92,22 +99,32 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
     }
 
     private void getNetDatas() {
-        VolleyInstance.getInstance().startResult(MaoYanValue.MOVIE, new VolleyResult() {
+        ThreadInstance.getInstance().startThread(new Runnable() {
             @Override
-            public void success(String resultStr) {
-                Gson gson = new Gson();
-                MovieBean movieBean = gson.fromJson(resultStr, MovieBean.class);
-                datas = movieBean.getData().getHot();
-//                movieListview.setAdapter(movieAdapter);
-//                movieAdapter.setDatas(datas);
-                initUi();
-            }
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                OkHttpInstance.getAsyn(MaoYanValue.MOVIE, new OkHttpInstance.ResultCallback() {
+                    @Override
+                    public void onError(Call call, Exception e) {
+                        e.printStackTrace();
+                    }
 
-            @Override
-            public void failure() {
-
+                    @Override
+                    public void onResponse(Object response) {
+                        Gson gson = new Gson();
+                        MovieBean movieBean = gson.fromJson(response.toString(), MovieBean.class);
+                        datas = movieBean.getData().getHot();
+                        progressBar.setVisibility(View.GONE);
+                        initUi();
+                    }
+                });
             }
         });
+
     }
 
 
@@ -161,27 +178,19 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         CardViewAdapter adapter = new CardViewAdapter(context);
         adapter.addAll(datas);
         cardView.setAdapter(adapter);
-//        frag = new MoviePlayFragment();
-//        FragmentManager manager = getChildFragmentManager();
-//        manager.beginTransaction().replace(R.id.movie_replace, frag).commit();
     }
-
 
     //cardView点击事件
     @Override
     public void onCardClick(View view, int position) {
-//        Bundle bundle = new Bundle();
-//        //传递数据
-//        bundle.putString("text", datas.get(position % datas.size()).getNm());
-//        frag.show(view, bundle);
           Intent intent = new Intent(context, MoviePlayActivity.class);
-          intent.putExtra("move",datas.get(position%datas.size()).getVideourl());
-          intent.putExtra("name",datas.get(position%datas.size()).getNm());
-          intent.putExtra("fore",datas.get(position%datas.size()).getVideoName());
-          intent.putExtra("dir",datas.get(position%datas.size()).getDir());
-          intent.putExtra("desc",datas.get(position%datas.size()).getDesc());
-          intent.putExtra("cat",datas.get(position%datas.size()).getCat());
-          intent.putExtra("time",datas.get(position%datas.size()).getShowTimeInfo());
+          intent.putExtra(MoviePlayActivity.MOVIE_URL,datas.get(position%datas.size()).getVideourl());
+          intent.putExtra(MoviePlayActivity.MOVIE_NAME,datas.get(position%datas.size()).getNm());
+          intent.putExtra(MoviePlayActivity.MOVIE_FORE,datas.get(position%datas.size()).getVideoName());
+          intent.putExtra(MoviePlayActivity.MOVIE_DIR,datas.get(position%datas.size()).getDir());
+          intent.putExtra(MoviePlayActivity.MOVIE_DESC,datas.get(position%datas.size()).getDesc());
+          intent.putExtra(MoviePlayActivity.MOVIE_CAT,datas.get(position%datas.size()).getCat());
+          intent.putExtra(MoviePlayActivity.MOVIE_TIME,datas.get(position%datas.size()).getShowTimeInfo());
 
           context.startActivity(intent);
 

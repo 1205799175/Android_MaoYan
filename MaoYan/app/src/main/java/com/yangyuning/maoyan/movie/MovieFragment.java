@@ -124,9 +124,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
                 });
             }
         });
-
     }
-
 
     private void intiTitleBar() {
         qRCode.setImageResource(R.mipmap.two_dimen_bar);

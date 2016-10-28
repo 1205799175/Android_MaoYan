@@ -126,7 +126,6 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
                 Toast.makeText(this, getResources().getString(R.string.wifi), Toast.LENGTH_SHORT).show();
             } else if (netType == ConnectivityManager.TYPE_MOBILE) {   //MOBILE
                 Toast.makeText(this, getResources().getString(R.string.data), Toast.LENGTH_SHORT).show();
-
             }
         }
     }

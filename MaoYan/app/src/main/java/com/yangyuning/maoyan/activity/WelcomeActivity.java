@@ -20,9 +20,6 @@ public class WelcomeActivity extends AbsBaseActivity {
 
     @Override
     protected void initView() {
-
-        //隐藏标题栏
-//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         //隐藏状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -35,7 +32,6 @@ public class WelcomeActivity extends AbsBaseActivity {
             public void onTick(long millisUntilFinished) {
 
             }
-
             @Override
             public void onFinish() {
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
@@ -43,9 +39,6 @@ public class WelcomeActivity extends AbsBaseActivity {
                 finish();
             }
         };
-
         timer.start();
     }
-
-
 }

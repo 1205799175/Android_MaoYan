@@ -26,6 +26,7 @@ import com.yangyuning.maoyan.utils.GestureHelper;
 /**
  * Created by dllo on 16/10/26.
  * 电影播放界面
+ * @author 姜鑫
  */
 public class MoviePlayActivity extends AppCompatActivity implements View.OnClickListener {
 

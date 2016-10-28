@@ -11,9 +11,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#d9d9d9"
-        android:minHeight="200dp">
-
+        android:background="@mipmap/sitansen"
+        android:minHeight="@dimen/cinema_play_height">
 
         <ImageView
             android:id="@+id/play_btn"
@@ -25,7 +24,7 @@
         <com.android.tedcoder.wkvideoplayer.view.SuperVideoPlayer
             android:id="@+id/video_player_item_1"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/cinema_play_height"
             android:visibility="gone"/>
     </FrameLayout>
 
@@ -39,9 +38,8 @@
                 android:id="@+id/move_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="惊天破"
-                android:textColor="#000"
-                android:textSize="25sp" />
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/cinema_play_title_size" />
 
             <TextView
                 android:id="@+id/move_fore_show"
@@ -49,48 +47,25 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="终级预告片"
-                android:textColor="#000"
-                android:textSize="15sp" />
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/cinema_price_size" />
         </RelativeLayout>
 
 
         <TextView
             android:id="@+id/move_dir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="导演: 吴品儒"
-            android:textSize="18sp" />
+            style="@style/movie_play"/>
 
         <TextView
             android:id="@+id/move_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="主演: 谢霆锋,刘青云,佟丽娅"
-            android:textSize="18sp" />
+            style="@style/movie_play" />
 
         <TextView
             android:id="@+id/move_cat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="类型: 动作,犯罪,剧情"
-            android:textSize="18sp" />
+            style="@style/movie_play"/>
 
         <TextView
             android:id="@+id/move_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="大陆上映时间:2016-10-23"
-            android:textSize="18sp" />
+            style="@style/movie_play"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="影片简介:"
-            android:textSize="18sp" />
 </LinearLayout>

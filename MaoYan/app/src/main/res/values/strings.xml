@@ -82,6 +82,8 @@
     <string name="have_no_net">当前无网络连接</string>
     <string name="wifi">当前是无线网络状态</string>
     <string name="data">当前是移动数据网络是否播放</string>
+    <string name="map">地图</string>
+    <string name="map_local">定位</string>
 
 
 </resources>

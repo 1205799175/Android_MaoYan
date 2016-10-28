@@ -3,11 +3,14 @@ package com.yangyuning.maoyan.cinema;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Contacts;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
@@ -34,7 +37,7 @@ import jxl.Workbook;
  *
  * @author 杨宇宁 10.18
  */
-public class CinemaFragment extends AbsBaseFragment implements RefreshListView.OnRefreshListener {
+public class CinemaFragment extends AbsBaseFragment implements RefreshListView.OnRefreshListener, ArcMenu.onMenuItemClickListner {
 
     private TextView areaTv, titleTv;
     private ImageView areaIv, searchIv;
@@ -43,6 +46,8 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
 
     private final static int REFRESH_COMPLETE = 0;
     private List<CinemaBean> datas;
+
+    private View starView;
 
     /**
      * 刷新视图
@@ -82,6 +87,11 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         areaIv = byView(R.id.title_bar_iv_share);
         searchIv = byView(R.id.title_bar_iv_collect);
         listView = byView(R.id.cinema_list_view);
+        starView = byView(R.id.right_bottom);
+        ArcMenu rightBottomArcMenu = (ArcMenu) starView.findViewById(R.id.arcMenu);
+        //动画效果消失
+        rightBottomArcMenu.setmMenuAnimationState(false);
+        rightBottomArcMenu.setOnMenuItemClickListner(this);
     }
 
     @Override
@@ -99,7 +109,6 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
         listView.setAdapter(cinemaAdapter);
         listView.setOnRefreshListener(this);
         initTitleBar();
-
         initListener();
     }
 
@@ -109,6 +118,7 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context, AreaActivity.class));
+                getActivity().overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
             }
         });
 
@@ -118,6 +128,19 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
                 Intent intent = new Intent(context, MapActivity.class);
                 intent.putExtra(MapActivity.KEY_ADDTESS, datas.get(position - 1).getAddr());
                 context.startActivity(intent);
+            }
+        });
+
+        //控制卫星菜单显示与隐藏
+        cinemaAdapter.setStarChangeListener(new IStarChangeListener() {
+            @Override
+            public void onShow() {
+                starView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onDismiss() {
+                starView.setVisibility(View.GONE);
             }
         });
     }
@@ -178,6 +201,11 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onClick(View childView, int position) {
+        Toast.makeText(context, "position:" + position, Toast.LENGTH_SHORT).show();
     }
 
 }

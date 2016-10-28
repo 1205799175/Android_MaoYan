@@ -148,6 +148,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context, AreaActivity.class));
+                getActivity().overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
             }
         });
     }
@@ -183,18 +184,17 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
     //cardView点击事件
     @Override
     public void onCardClick(View view, int position) {
-          Intent intent = new Intent(context, MoviePlayActivity.class);
-          intent.putExtra(MoviePlayActivity.MOVIE_URL,datas.get(position%datas.size()).getVideourl());
-          intent.putExtra(MoviePlayActivity.MOVIE_NAME,datas.get(position%datas.size()).getNm());
-          intent.putExtra(MoviePlayActivity.MOVIE_FORE,datas.get(position%datas.size()).getVideoName());
-          intent.putExtra(MoviePlayActivity.MOVIE_DIR,datas.get(position%datas.size()).getDir());
-          intent.putExtra(MoviePlayActivity.MOVIE_DESC,datas.get(position%datas.size()).getDesc());
-          intent.putExtra(MoviePlayActivity.MOVIE_CAT,datas.get(position%datas.size()).getCat());
-          intent.putExtra(MoviePlayActivity.MOVIE_TIME,datas.get(position%datas.size()).getShowTimeInfo());
-
-          context.startActivity(intent);
-
-        getActivity().overridePendingTransition(R.anim.movie_play_rotate, R.anim.movie_play_rotate);
+        Intent intent = new Intent(context, MoviePlayActivity.class);
+        intent.putExtra(MoviePlayActivity.MOVIE_URL, datas.get(position % datas.size()).getVideourl());
+        intent.putExtra(MoviePlayActivity.MOVIE_NAME, datas.get(position % datas.size()).getNm());
+        intent.putExtra(MoviePlayActivity.MOVIE_FORE, datas.get(position % datas.size()).getVideoName());
+        intent.putExtra(MoviePlayActivity.MOVIE_DIR, datas.get(position % datas.size()).getDir());
+        intent.putExtra(MoviePlayActivity.MOVIE_DESC, datas.get(position % datas.size()).getDesc());
+        intent.putExtra(MoviePlayActivity.MOVIE_CAT, datas.get(position % datas.size()).getCat());
+        intent.putExtra(MoviePlayActivity.MOVIE_TIME, datas.get(position % datas.size()).getShowTimeInfo());
+        context.startActivity(intent);
+        //跳转动画
+        getActivity().overridePendingTransition(R.anim.wave_scale, R.anim.my_alpha_action);
     }
 
     //cardView的适配器

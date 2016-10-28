@@ -6,7 +6,7 @@
         android:id="@+id/main_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="地图"/>
+        android:text="@string/map"/>
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="定位"
+            android:text="@string/map_local"
             android:textColor="@android:color/black"
             android:visibility="gone"/>
     </RadioGroup>

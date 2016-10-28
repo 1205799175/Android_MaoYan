@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
-    android:background="#3b2a22">
+    android:background="@color/movie_bg">
     <!--电影-->
 
     <include
@@ -19,7 +19,7 @@
 
     <com.yangyuning.maoyan.views.CardView
         android:id="@+id/movie_card"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/map_title_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"/>

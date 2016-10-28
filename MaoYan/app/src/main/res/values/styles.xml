@@ -64,4 +64,13 @@
         <item name="android:background">@drawable/fql_btn_pay</item>
     </style>
 
+    <!--播放-->
+    <style name="movie_play">
+        <item name="android:textSize">@dimen/title_bar_tv_size</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
 </resources>

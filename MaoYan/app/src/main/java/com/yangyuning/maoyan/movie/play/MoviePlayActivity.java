@@ -118,8 +118,8 @@ public class MoviePlayActivity extends AppCompatActivity implements View.OnClick
         info = mConnectivity.getActiveNetworkInfo();
 
         if (info == null || !mConnectivity.getBackgroundDataSetting()) {
-            Toast.makeText(this, "当前无网络连接", Toast.LENGTH_SHORT).show();
-        }else {
+            Toast.makeText(this, getResources().getString(R.string.have_no_net), Toast.LENGTH_SHORT).show();
+        } else {
             int netType = info.getType();
             int netSubtype = info.getSubtype();
 

@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/mine_login"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_login_height"
         android:background="@color/mine_login_bg"
@@ -44,6 +45,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/mine_want_watch"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -71,6 +73,7 @@
             android:layout_gravity="center"/>
 
         <LinearLayout
+            android:id="@+id/mine_watched"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -98,6 +101,7 @@
             android:layout_gravity="center"/>
 
         <LinearLayout
+            android:id="@+id/mine_discuss"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -125,6 +129,7 @@
             android:layout_gravity="center"/>
 
         <LinearLayout
+            android:id="@+id/mine_topic"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -165,6 +170,7 @@
             android:textSize="@dimen/area_edit_text_size" />
 
         <TextView
+            android:id="@+id/mine_all"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -189,6 +195,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/mine_order_no_buy"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -234,6 +241,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/mine_order_discuss"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -256,6 +264,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/mine_back_money"
             android:layout_width="@dimen/weight_zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -280,6 +289,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mine_collect"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_order_height"
         android:layout_marginTop="@dimen/mine_order_margin_top"
@@ -298,6 +308,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mine_vip"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_order_height"
         android:layout_marginTop="@dimen/mine_setting_top"
@@ -316,6 +327,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mine_bag"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_order_height"
         android:layout_marginTop="@dimen/mine_setting_top"
@@ -334,6 +346,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mine_little_money"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_order_height"
         android:layout_marginTop="@dimen/mine_setting_top"
@@ -352,6 +365,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mine_setting"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_order_height"
         android:layout_marginTop="@dimen/mine_setting_top"

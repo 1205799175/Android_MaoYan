@@ -18,6 +18,7 @@ import com.yangyuning.maoyan.mine.order.PayActivity;
 public class MineFragment extends AbsBaseFragment implements View.OnClickListener {
 
     private LinearLayout pay;
+    private LinearLayout wantWatched, wateced, discuss, topic;
 
     public static MineFragment newInstance() {
         Bundle args = new Bundle();
@@ -34,7 +35,6 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
     @Override
     protected void initView() {
         pay = byView(R.id.order_pay);
-
         pay.setOnClickListener(this);
     }
 
@@ -48,7 +48,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
         switch (v.getId()){
             case R.id.order_pay:
                 context.startActivity(new Intent(context, PayActivity.class));
-
+                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 break;
         }
     }

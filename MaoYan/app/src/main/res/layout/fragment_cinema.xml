@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
     <!--影院-->
 
-    <include layout="@layout/layout_title_bar"/>
+    <include
+        android:id="@+id/cinema_title_bar"
+        layout="@layout/layout_title_bar" />
 
     <com.yangyuning.maoyan.views.RefreshListView
         android:id="@+id/cinema_list_view"
-        android:layout_margin="@dimen/cinema_margin"
-        android:scrollbars="none"
+        android:layout_below="@+id/cinema_title_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/cinema_margin"
+        android:scrollbars="none" />
 
-</LinearLayout>
+    <include
+        android:id="@+id/right_bottom"
+        layout="@layout/cinema_star_right_bottom" />
+
+</RelativeLayout>

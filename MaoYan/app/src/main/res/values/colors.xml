@@ -58,4 +58,6 @@
     <color name="red">#FF0000</color>
     <color name="darkgrey">#C0C0C0</color>
     <color name="cinema_price">#ec140d</color>
+    <color name="map_title_bg">#b4b2b2</color>
+    <color name="movie_bg">#3b2a22</color>
 </resources>

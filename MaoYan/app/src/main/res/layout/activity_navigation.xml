@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center_vertical"
-        android:background="#b4b2b2"
+        android:background="@color/map_title_bg"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="@dimen/map_title_margin"
             android:button="@null"
             android:background="@mipmap/x6"/>
     </RadioGroup>

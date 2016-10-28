@@ -46,7 +46,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textColor="@color/area_center_text_color"
-            android:textSize="30dp"
+            android:textSize="@dimen/area_center_text_size"
             android:background="@color/area_center_text_bg"
             android:visibility="invisible" />
 

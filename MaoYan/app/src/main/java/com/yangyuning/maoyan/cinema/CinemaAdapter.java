@@ -20,6 +20,12 @@ public class CinemaAdapter extends AbsBaseAdapter<CinemaBean, CinemaAdapter.Cine
         super(context);
     }
 
+    private IStarChangeListener starChangeListener;
+
+    public void setStarChangeListener(IStarChangeListener starChangeListener) {
+        this.starChangeListener = starChangeListener;
+    }
+
     @Override
     protected int setItemLayout() {
         return R.layout.item_cinema;
@@ -35,6 +41,11 @@ public class CinemaAdapter extends AbsBaseAdapter<CinemaBean, CinemaAdapter.Cine
         cinemaViewHolder.nameTv.setText(itemData.getName());
         cinemaViewHolder.privceTv.setText(itemData.getPrice());
         cinemaViewHolder.addressTv.setText(itemData.getAddr());
+        if (position > 5){
+            starChangeListener.onShow();
+        } else {
+            starChangeListener.onDismiss();
+        }
     }
 
     class CinemaViewHolder extends AbsBaseAdapter.BaseHolder {

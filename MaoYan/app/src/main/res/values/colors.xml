@@ -60,4 +60,11 @@
     <color name="cinema_price">#ec140d</color>
     <color name="map_title_bg">#b4b2b2</color>
     <color name="movie_bg">#3b2a22</color>
+
+    <!--dialog-->
+    <color name="white_light">#dddddd</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color> <!--黑-->
+    <color name="black_light">#363636</color> <!--黑-->
+    <color name="gray">#dcdcdc</color>
 </resources>

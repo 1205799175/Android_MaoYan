@@ -1,11 +1,9 @@
 package com.yangyuning.maoyan.movie;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +21,6 @@ import com.yangyuning.maoyan.mode.bean.PayBean;
 import com.yangyuning.maoyan.mode.db.LiteOrmInstance;
 import com.yangyuning.maoyan.mode.net.OkHttpInstance;
 import com.yangyuning.maoyan.movie.area.AreaActivity;
-import com.yangyuning.maoyan.movie.area.VolleyInstance;
-import com.yangyuning.maoyan.movie.area.VolleyResult;
 import com.yangyuning.maoyan.movie.play.MoviePlayActivity;
 import com.yangyuning.maoyan.movie.zxing.activity.CaptureActivity;
 import com.yangyuning.maoyan.utils.CardUtils;
@@ -35,7 +31,6 @@ import com.yangyuning.maoyan.views.CardView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONArray;
 
 import java.util.List;
 
@@ -56,6 +51,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
     private CardView cardView;
     private List<MovieBean.DataBean.HotBean> datas;
     private ProgressBar progressBar;
+    private Button button;
 
     public static MovieFragment newInstance() {
         Bundle args = new Bundle();
@@ -63,7 +59,6 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         fragment.setArguments(args);
         return fragment;
     }
-
 
     @Override
     protected int setLayout() {

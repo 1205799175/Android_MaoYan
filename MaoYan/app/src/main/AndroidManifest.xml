@@ -69,6 +69,8 @@
         <!--电影 地区详情-->
         <activity android:name=".movie.area.AreaActivity" />
         <activity android:name=".mine.refesh.RefeshActivity"/>
+        <!--玻璃破碎效果的activity-->
+        <activity android:name=".mine.breakwindow.BreakWindowActivity"/>
         <meta-data
             android:name="design_width"
             android:value="768" />

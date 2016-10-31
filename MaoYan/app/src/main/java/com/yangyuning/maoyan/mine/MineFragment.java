@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
+import com.yangyuning.maoyan.mine.breakwindow.BreakWindowActivity;
 import com.yangyuning.maoyan.mine.dialog.DialogOnClickListener;
 import com.yangyuning.maoyan.mine.dialog.DialogOnItemClickListener;
 import com.yangyuning.maoyan.mine.dialog.MDAlertDialog;
@@ -123,6 +124,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
                 getActivity().overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
                 break;
             case R.id.mine_collect: //收藏
+                context.startActivity(new Intent(context, BreakWindowActivity.class));
                 break;
             case R.id.mine_vip: //会员中心
                 break;

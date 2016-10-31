@@ -27,6 +27,7 @@ import com.yangyuning.maoyan.utils.CardUtils;
 import com.yangyuning.maoyan.utils.MaoYanValue;
 import com.yangyuning.maoyan.utils.ThreadInstance;
 import com.yangyuning.maoyan.views.CardView;
+import com.yangyuning.maoyan.views.ProgressWheel;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -50,8 +51,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
     private static final int PHOTO_PIC = 1;
     private CardView cardView;
     private List<MovieBean.DataBean.HotBean> datas;
-    private ProgressBar progressBar;
-    private Button button;
+    private ProgressWheel progressWheel;
 
     public static MovieFragment newInstance() {
         Bundle args = new Bundle();
@@ -71,7 +71,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
         titleTv = byView(R.id.title_bar_tv);
         qRCode = byView(R.id.title_bar_iv_share);
         cardView = byView(R.id.movie_card);
-        progressBar = byView(R.id.movie_progress_bar);
+        progressWheel = byView(R.id.progress_wheel);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
             @Override
             public void run() {
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(1500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -113,7 +113,7 @@ public class MovieFragment extends AbsBaseFragment implements CardView.OnCardCli
                         Gson gson = new Gson();
                         MovieBean movieBean = gson.fromJson(response.toString(), MovieBean.class);
                         datas = movieBean.getData().getHot();
-                        progressBar.setVisibility(View.GONE);
+                        progressWheel.setVisibility(View.GONE);
                         initUi();
                     }
                 });

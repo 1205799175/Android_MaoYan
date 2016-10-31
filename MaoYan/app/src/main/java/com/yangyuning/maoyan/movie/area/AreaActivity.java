@@ -27,6 +27,7 @@ import com.yangyuning.maoyan.mode.net.OkHttpInstance;
 import com.yangyuning.maoyan.utils.GestureHelper;
 import com.yangyuning.maoyan.utils.MaoYanValue;
 import com.yangyuning.maoyan.utils.ThreadInstance;
+import com.yangyuning.maoyan.views.ProgressWheel;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -56,7 +57,7 @@ public class AreaActivity extends AbsBaseActivity {
     private ImageView backIv;
     private EventBus eventBus;
 
-    private ProgressBar progressBar;
+    private ProgressWheel progressWheel;
     private GestureHelper gestureHelper;
 
     @Override
@@ -71,7 +72,7 @@ public class AreaActivity extends AbsBaseActivity {
         sortListView = byView(R.id.country_lvcountry);
         mClearEditText = byView(R.id.filter_edit);
         backIv = byView(R.id.title_bar_iv_left);
-        progressBar = byView(R.id.area_progress_bar);
+        progressWheel = byView(R.id.progress_wheel);
         //初始化EventBus
         eventBus = EventBus.getDefault();
         //解决gesture和ListView的滑动冲突
@@ -132,7 +133,7 @@ public class AreaActivity extends AbsBaseActivity {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(1500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -147,7 +148,7 @@ public class AreaActivity extends AbsBaseActivity {
                         Gson gson = new Gson();
                         AreaBean areaBean = gson.fromJson(response.toString(), AreaBean.class);
                         SourceDateList = areaBean.getCts();
-                        progressBar.setVisibility(View.GONE);
+                        progressWheel.setVisibility(View.GONE);
                         initViews();
                     }
                 });

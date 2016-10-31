@@ -118,6 +118,12 @@
         <uses-library
             android:name="org.simalliance.openmobileapi"
             android:required="false" />
+        <!--指南针功能-->
+        <activity android:name=".mine.compass.CompassActivity"/>
+        <!--九宫格解锁-->
+        <activity android:name=".mine.deblocking.LockPatternActivity"/>
+        <!--我的钱包-->
+        <activity android:name=".mine.deblocking.WalletAvtivity"/>
     </application>
 
 </manifest>

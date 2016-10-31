@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.mine.breakwindow.BreakWindowActivity;
+import com.yangyuning.maoyan.mine.compass.CompassActivity;
+import com.yangyuning.maoyan.mine.deblocking.LockPatternActivity;
 import com.yangyuning.maoyan.mine.dialog.DialogOnClickListener;
 import com.yangyuning.maoyan.mine.dialog.DialogOnItemClickListener;
 import com.yangyuning.maoyan.mine.dialog.MDAlertDialog;
@@ -129,8 +131,12 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
             case R.id.mine_vip: //会员中心
                 break;
             case R.id.mine_bag: //我的钱包
+                Intent wallet = new Intent(context, LockPatternActivity.class);
+                context.startActivity(wallet);
                 break;
-            case R.id.mine_little_money:    //我的余额
+            case R.id.mine_little_money:    //我的指南针
+                Intent intent = new Intent(context, CompassActivity.class);
+                context.startActivity(intent);
                 break;
             case R.id.mine_setting: //设置中心
                 break;

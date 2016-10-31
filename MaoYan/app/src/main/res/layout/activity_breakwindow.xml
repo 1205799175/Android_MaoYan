@@ -2,23 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="@mipmap/lastback">
     <RelativeLayout
         android:id="@+id/demo_parent"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#75c931"
-        android:padding="15dp">
-
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:background="@mipmap/secondback">
         <ImageView
             android:id="@+id/demo_image"
+            android:layout_alignParentLeft="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@mipmap/zhao" />
+            android:src="@mipmap/zhao"/>
     </RelativeLayout>
+
 
 </LinearLayout>

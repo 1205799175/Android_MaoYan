@@ -71,6 +71,9 @@
         <activity android:name=".mine.refesh.RefeshActivity"/>
         <!--玻璃破碎效果的activity-->
         <activity android:name=".mine.breakwindow.BreakWindowActivity"/>
+        <!--关灯游戏-->
+        <activity android:name=".mine.closelight.CloseLightActivity"/>
+
         <meta-data
             android:name="design_width"
             android:value="768" />

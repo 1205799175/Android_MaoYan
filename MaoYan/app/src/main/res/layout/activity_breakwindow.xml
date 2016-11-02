@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/lastback">
+    <include layout="@layout/layout_title_bar"/>
+
     <RelativeLayout
         android:id="@+id/demo_parent"
         android:layout_height="match_parent"

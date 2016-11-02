@@ -67,4 +67,8 @@
     <color name="black">#000000</color> <!--黑-->
     <color name="black_light">#363636</color> <!--黑-->
     <color name="gray">#dcdcdc</color>
+
+    <!--关灯游戏-->
+    <color name="green">#99cc00</color>
+    <color name="close_Light_red">#f00</color>
 </resources>

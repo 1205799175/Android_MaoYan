@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/close_light_ll"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_bar" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/close_light_count"
+            android:layout_width="@dimen/weight_zero"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/text_color_black"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="时间:0"/>
+        <TextView
+            android:id="@+id/close_light_level"
+            android:layout_width="@dimen/weight_zero"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textColor="@color/text_color_black"
+            android:layout_height="wrap_content"
+            android:text="等级"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/weight_zero"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_1"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="1" />
+
+            <Button
+                android:id="@+id/button_2"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="2" />
+
+            <Button
+                android:id="@+id/button_3"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="3" />
+
+            <Button
+                android:id="@+id/button_4"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="4" />
+
+            <Button
+                android:id="@+id/button_5"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_6"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="6" />
+
+            <Button
+                android:id="@+id/button_7"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="7" />
+
+            <Button
+                android:id="@+id/button_8"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="8" />
+
+            <Button
+                android:id="@+id/button_9"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="9" />
+
+            <Button
+                android:id="@+id/button_10"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_11"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="11" />
+
+            <Button
+                android:id="@+id/button_12"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="12" />
+
+            <Button
+                android:id="@+id/button_13"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="13" />
+
+            <Button
+                android:id="@+id/button_14"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="14" />
+
+            <Button
+                android:id="@+id/button_15"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_16"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="16" />
+
+            <Button
+                android:id="@+id/button_17"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="17" />
+
+            <Button
+                android:id="@+id/button_18"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="18" />
+
+            <Button
+                android:id="@+id/button_19"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="19" />
+
+            <Button
+                android:id="@+id/button_20"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="20" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_21"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="21" />
+
+            <Button
+                android:id="@+id/button_22"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="22" />
+
+            <Button
+                android:id="@+id/button_23"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="23" />
+
+            <Button
+                android:id="@+id/button_24"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="24" />
+
+            <Button
+                android:id="@+id/button_25"
+                style="@style/button"
+                android:background="@android:color/holo_green_light"
+                android:tag="25" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

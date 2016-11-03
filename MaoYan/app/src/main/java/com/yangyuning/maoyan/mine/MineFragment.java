@@ -140,17 +140,17 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
             case R.id.mine_order_discuss: //待评价
                 dialog6.show();
                 break;
-            case R.id.mine_back_money:  //退款
+            case R.id.mine_back_money:  //水滴刷新
                 context.startActivity(new Intent(context, RefeshActivity.class));
                 getActivity().overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
                 break;
-            case R.id.mine_collect: //收藏
+            case R.id.mine_collect: //碎屏效果
                 context.startActivity(new Intent(context, BreakWindowActivity.class));
                 break;
-            case R.id.mine_vip: //会员中心
+            case R.id.mine_vip: //关灯游戏
                 context.startActivity(new Intent(context, CloseLightActivity.class));
                 break;
-            case R.id.mine_bag: //我的钱包(密码锁)
+            case R.id.mine_bag: //手势解锁
                 Intent wallet = new Intent(context, LockPatternActivity.class);
                 context.startActivity(wallet);
                 getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -160,7 +160,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
                 context.startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 break;
-            case R.id.mine_setting: //设置中心
+            case R.id.mine_setting: //不同button
                 context.startActivity(new Intent(context, ButtonActivity.class));
                 getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 break;

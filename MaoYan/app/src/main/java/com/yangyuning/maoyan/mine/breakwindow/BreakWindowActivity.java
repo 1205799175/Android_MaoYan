@@ -31,6 +31,8 @@ public class BreakWindowActivity extends AbsBaseActivity implements View.OnClick
     private Paint whitePaint;
     private LinearLayout back;
 
+    private GestureHelper gestureHelper;
+
     @Override
     protected int setLayout() {
         return R.layout.activity_breakwindow;
@@ -40,16 +42,13 @@ public class BreakWindowActivity extends AbsBaseActivity implements View.OnClick
     protected void initView() {
         parentLayout = (RelativeLayout) findViewById(R.id.demo_parent);
         imageView = (ImageView) findViewById(R.id.demo_image);
-<<<<<<< HEAD
         back = (LinearLayout) findViewById(R.id.breakwindow_back);
-=======
-
->>>>>>> feature/杨宇宁
     }
 
     @Override
     protected void initDatas() {
-        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setBackListener(new View.OnClickListener() {
+        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setTitle(getResources().
+                getString(R.string.breakwindow)).setBackListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BreakWindowActivity.this.finish();
@@ -68,7 +67,32 @@ public class BreakWindowActivity extends AbsBaseActivity implements View.OnClick
 
         setOnTouchListener();
         back.setOnClickListener(this);
+
+        initGestureBack();
     }
+
+    private void initGestureBack() {
+        gestureHelper = new GestureHelper(this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+            @Override
+            public void OnFlingLeft() {
+                finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+            }
+
+            @Override
+            public void OnFlingRight() {
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureHelper.onTouchEvent(event);
+    }
+
 
     public void setOnTouchListener() {
         parentLayout.setOnTouchListener(colorfulListener);

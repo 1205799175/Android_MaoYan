@@ -40,6 +40,8 @@ public class CloseLightActivity extends AbsBaseActivity {
     private boolean isCreating = true;
     private int stone;//不能动的点
 
+    private GestureHelper gestureHelper;
+
     @Override
     protected int setLayout() {
         return R.layout.activity_close_light;
@@ -98,6 +100,29 @@ public class CloseLightActivity extends AbsBaseActivity {
         initTv();
         initNormalDialog();
         isCreating = false;
+
+        initGestureBack();
+    }
+
+    private void initGestureBack() {
+        gestureHelper = new GestureHelper(this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+            @Override
+            public void OnFlingLeft() {
+                finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+            }
+
+            @Override
+            public void OnFlingRight() {
+
+            }
+        });
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureHelper.onTouchEvent(event);
     }
 
     public void buttonClick(View v) {
@@ -189,7 +214,7 @@ public class CloseLightActivity extends AbsBaseActivity {
     }
 
     private void initTitleBar() {
-        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setBackListener(new View.OnClickListener() {
+        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setTitle(getResources().getString(R.string.close_light_game)).setBackListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CloseLightActivity.this.finish();

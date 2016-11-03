@@ -63,7 +63,7 @@ public class RefeshActivity extends AbsBaseActivity implements WaveSwipeRefreshL
     }
 
     private void initTitle() {
-        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setBackListener(new View.OnClickListener() {
+        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setTitle(getResources().getString(R.string.refesh_water)).setBackListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RefeshActivity.this.finish();

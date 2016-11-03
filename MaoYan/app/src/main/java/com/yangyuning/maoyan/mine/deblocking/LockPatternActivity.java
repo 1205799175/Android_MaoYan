@@ -23,6 +23,8 @@ public class LockPatternActivity extends AppCompatActivity implements LockPatter
     private LockPatternView mLockPatternView;
     private String password = "14789";
 
+    private GestureHelper gestureHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,33 @@ public class LockPatternActivity extends AppCompatActivity implements LockPatter
     }
 
     private void initTitleBar() {
-        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setBackListener(new View.OnClickListener() {
+        initTitlebar();
+        initGestureback();
+    }
+
+    private void initGestureback() {
+        gestureHelper = new GestureHelper(this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+            @Override
+            public void OnFlingLeft() {
+                finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+            }
+
+            @Override
+            public void OnFlingRight() {
+
+            }
+        });
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureHelper.onTouchEvent(event);
+    }
+
+    private void initTitlebar() {
+        new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setTitle(getResources().getString(R.string.deblocking_gesture)).setBackListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LockPatternActivity.this.finish();

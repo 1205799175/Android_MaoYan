@@ -1,6 +1,7 @@
 package com.yangyuning.maoyan.mine.button;
 
 import android.animation.ValueAnimator;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.yangyuning.maoyan.utils.GestureHelper;
  * 各种button
  */
 public class ButtonActivity extends AbsBaseActivity {
+    private GestureHelper gestureHelper;
     @Override
     protected int setLayout() {
         return R.layout.activity_button;
@@ -33,7 +35,31 @@ public class ButtonActivity extends AbsBaseActivity {
         initButtonThree();
         initButtonFour();
         initTitleBar();
+
+        initGestureBack();
     }
+
+    private void initGestureBack() {
+        gestureHelper = new GestureHelper(this);
+        gestureHelper.setListener(new GestureHelper.OnFlingListener() {
+            @Override
+            public void OnFlingLeft() {
+                finish();
+                // 退出动画
+                overridePendingTransition(R.anim.translate_exit_in, R.anim.translate_exit_out);
+            }
+
+            @Override
+            public void OnFlingRight() {
+
+            }
+        });
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureHelper.onTouchEvent(event);
+    }
+
     private void initTitleBar() {
         new BaseTitleBar(this).setImageLsftRes(R.mipmap.title_bar_back).setBackListener(new View.OnClickListener() {
             @Override

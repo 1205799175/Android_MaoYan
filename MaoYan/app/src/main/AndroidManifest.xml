@@ -19,26 +19,38 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!--用于读取手机当前的状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--允许访问摄像头进行拍照-->
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!--写sd卡的权限-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--挂载、反挂载外部文件系统-->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
     <!--支付相关-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--接收短信-->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <!--改变网络状态如是否能联网-->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    允许程序执行NFC近距离通讯操作，用于移动支持
     <uses-permission android:name="android.permission.NFC" />
-    <!---->
     <uses-feature android:name="android.hardware.nfc.hce" />
+
+    <!--第三方登录-->
+    <!--允许程序管理AccountManager中的账户列表-->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <!--访问GMail账户列表-->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <!-- 蓝牙分享所需的权限 -->
+    <!--允许程序连接配对过的蓝牙设备-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />\
+    <!--允许程序进行发现和配对新的蓝牙设备-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:name=".app.MaoYanApp"
@@ -127,6 +139,31 @@
         <activity android:name=".mine.deblocking.LockPatternActivity"/>
         <!--我的钱包-->
         <activity android:name=".mine.deblocking.WalletAvtivity"/>
+        <!--button-->
+        <activity android:name=".mine.button.ButtonActivity"/>
+
+        <!--第三方登录-->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

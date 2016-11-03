@@ -4,6 +4,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
+import com.yangyuning.maoyan.utils.GestureHelper;
 
 /**
  * Created by dllo on 16/10/31.
@@ -24,6 +26,7 @@ public class CompassActivity extends AbsBaseActivity implements SensorEventListe
     private float currentDegree = 0f;
     //定义Sensor管理器
     private SensorManager manager;
+
     @Override
     protected int setLayout() {
         return R.layout.activity_compass;
@@ -45,6 +48,7 @@ public class CompassActivity extends AbsBaseActivity implements SensorEventListe
           }
       });
     }
+
     @Override
     protected void onResume() {
         super.onResume();

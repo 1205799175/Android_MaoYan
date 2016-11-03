@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.fuqianla.paysdk.FuQianLa;
 
+import cn.sharesdk.framework.ShareSDK;
+
 /**
  * Created by dllo on 16/10/18.
  * Application
@@ -18,6 +20,7 @@ public class MaoYanApp extends Application {
         super.onCreate();
         FuQianLa.getInstance().init(getApplicationContext());
         context = getApplicationContext();
+        ShareSDK.initSDK(this);
     }
 
     public static Context getContext() {

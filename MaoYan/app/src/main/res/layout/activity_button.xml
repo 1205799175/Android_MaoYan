@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton1"
+            android:layout_width="186dp"
+            android:layout_height="64dp"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@drawable/ic_action_accept"
+            app:cpb_iconError="@drawable/ic_action_cancel"
+            app:cpb_textIdle="@string/Upload" />
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton2"
+            android:layout_width="186dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@drawable/ic_action_accept"
+            app:cpb_iconError="@drawable/ic_action_cancel"
+            app:cpb_textIdle="@string/Upload" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton3"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_textComplete="@string/Complete"
+            app:cpb_textError="@string/Error"
+            app:cpb_textIdle="@string/Upload" />
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton4"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_textComplete="@string/Complete"
+            app:cpb_textError="@string/Error"
+            app:cpb_textIdle="@string/Upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton5"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_textComplete="@string/Complete"
+            app:cpb_textError="@string/Error"
+            app:cpb_textIdle="@string/Upload" />
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton6"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_textComplete="@string/Complete"
+            app:cpb_textError="@string/Error"
+            app:cpb_textIdle="@string/Upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton7"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_paddingProgress="10dp"
+            app:cpb_textComplete="@string/Complete"
+            app:cpb_textError="@string/Error"
+            app:cpb_textIdle="@string/Upload" />
+
+        <com.yangyuning.maoyan.mine.button.CircularProgressButton
+            android:id="@+id/circularButton8"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_paddingProgress="10dp"
+            app:cpb_textComplete="@string/Complete"
+            app:cpb_textError="@string/Error"
+            app:cpb_textIdle="@string/Upload" />
+
+    </LinearLayout>
+
+</LinearLayout>

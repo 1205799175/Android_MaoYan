@@ -4,6 +4,7 @@ import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.yangyuning.maoyan.R;
@@ -14,9 +15,10 @@ import com.zys.brokenview.BrokenView;
 
 /**
  * Created by dllo on 16/10/31.
+ *
  * @韩朝
  */
-public class BreakWindowActivity extends AbsBaseActivity {
+public class BreakWindowActivity extends AbsBaseActivity implements View.OnClickListener {
     private BrokenView mBrokenView;
 
     private RelativeLayout parentLayout;
@@ -25,6 +27,7 @@ public class BreakWindowActivity extends AbsBaseActivity {
     private BrokenTouchListener colorfulListener;
     private BrokenTouchListener whiteListener;
     private Paint whitePaint;
+    private LinearLayout back;
 
     @Override
     protected int setLayout() {
@@ -35,6 +38,7 @@ public class BreakWindowActivity extends AbsBaseActivity {
     protected void initView() {
         parentLayout = (RelativeLayout) findViewById(R.id.demo_parent);
         imageView = (ImageView) findViewById(R.id.demo_image);
+        back = (LinearLayout) findViewById(R.id.breakwindow_back);
     }
 
     @Override
@@ -57,6 +61,7 @@ public class BreakWindowActivity extends AbsBaseActivity {
                 build();
 
         setOnTouchListener();
+        back.setOnClickListener(this);
     }
 
     public void setOnTouchListener() {
@@ -68,4 +73,8 @@ public class BreakWindowActivity extends AbsBaseActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        finish();
+    }
 }

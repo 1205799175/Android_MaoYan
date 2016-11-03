@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/breakwindow_back"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/lastback">
-    <include layout="@layout/layout_title_bar"/>
+    android:background="@mipmap/lastback"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title_bar" />
+
 
     <RelativeLayout
         android:id="@+id/demo_parent"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:padding="15dp"
-        android:background="@mipmap/secondback">
+        android:layout_height="match_parent"
+        android:background="@mipmap/secondback"
+        android:padding="15dp">
+
         <ImageView
             android:id="@+id/demo_image"
-            android:layout_alignParentLeft="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@mipmap/zhao"/>
+            android:src="@mipmap/zhao" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="长按碎屏"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="长按碎屏"
+        android:textColor="#478cd6"
+        android:textSize="20sp" />
 
 
 </LinearLayout>

@@ -10,12 +10,9 @@ import android.widget.Toast;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.mine.breakwindow.BreakWindowActivity;
-<<<<<<< HEAD
 import com.yangyuning.maoyan.mine.compass.CompassActivity;
 import com.yangyuning.maoyan.mine.deblocking.LockPatternActivity;
-=======
 import com.yangyuning.maoyan.mine.closelight.CloseLightActivity;
->>>>>>> feature/杨宇宁
 import com.yangyuning.maoyan.mine.dialog.DialogOnClickListener;
 import com.yangyuning.maoyan.mine.dialog.DialogOnItemClickListener;
 import com.yangyuning.maoyan.mine.dialog.MDAlertDialog;

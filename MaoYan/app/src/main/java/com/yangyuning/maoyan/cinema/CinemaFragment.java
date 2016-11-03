@@ -173,8 +173,6 @@ public class CinemaFragment extends AbsBaseFragment implements RefreshListView.O
     private void initTitleBar() {
         areaTv.setText(R.string.dalian);
         titleTv.setText(R.string.cinema);
-        searchIv.setImageResource(R.mipmap.title_bar_search);
-        areaIv.setImageResource(R.mipmap.title_bar_erea);
     }
 
     /**

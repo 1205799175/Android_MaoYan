@@ -2,6 +2,7 @@ package com.yangyuning.maoyan.mine.breakwindow;
 
 import android.graphics.Paint;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -9,6 +10,7 @@ import android.widget.RelativeLayout;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
+import com.yangyuning.maoyan.utils.GestureHelper;
 import com.zys.brokenview.BrokenTouchListener;
 import com.zys.brokenview.BrokenView;
 
@@ -35,6 +37,7 @@ public class BreakWindowActivity extends AbsBaseActivity {
     protected void initView() {
         parentLayout = (RelativeLayout) findViewById(R.id.demo_parent);
         imageView = (ImageView) findViewById(R.id.demo_image);
+
     }
 
     @Override

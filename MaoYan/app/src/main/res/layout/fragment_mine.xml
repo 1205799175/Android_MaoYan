@@ -12,6 +12,7 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mine_login_icon"
             android:layout_width="@dimen/mine_login_icon"
             android:layout_height="@dimen/mine_login_icon"
             android:layout_gravity="center_vertical"
@@ -19,6 +20,7 @@
             android:src="@mipmap/login_icon" />
 
         <TextView
+            android:id="@+id/mine_login_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

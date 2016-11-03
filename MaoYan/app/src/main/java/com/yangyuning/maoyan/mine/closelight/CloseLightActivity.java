@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.yangyuning.maoyan.base.AbsBaseActivity;
 import com.yangyuning.maoyan.base.BaseTitleBar;
 import com.yangyuning.maoyan.mine.dialog.DialogOnClickListener;
 import com.yangyuning.maoyan.mine.dialog.NormalAlertDialog;
+import com.yangyuning.maoyan.utils.GestureHelper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -35,6 +37,8 @@ public class CloseLightActivity extends AbsBaseActivity {
     private TextView levelTv, countTv;
     private Handler handler;
     private int level = 1;  //等级
+    private boolean isCreating = true;
+    private int stone;//不能动的点
 
     @Override
     protected int setLayout() {
@@ -75,15 +79,25 @@ public class CloseLightActivity extends AbsBaseActivity {
 
     @Override
     protected void initDatas() {
+
         initTitleBar();
         Intent intent = getIntent();
         level = intent.getIntExtra(KEY_LEVEL, 1);
+        //随机找出一个按钮设置为无点击事件, 颜色设置为黑色(增加游戏难度)
+        stone = new Random().nextInt(24) + 1;
+        arrayList.get(stone).setBackgroundColor(Color.BLACK);
+        arrayList.get(stone).setEnabled(false);
         for (int i = 0; i < level; i++) {
             int num = new Random().nextInt(24) + 1;
-            buttonClick(arrayList.get(num));
+            if (num == stone) {
+
+            } else {
+                buttonClick(arrayList.get(num));
+            }
         }
         initTv();
         initNormalDialog();
+        isCreating = false;
     }
 
     public void buttonClick(View v) {
@@ -101,52 +115,60 @@ public class CloseLightActivity extends AbsBaseActivity {
         //上
         if (index > 5) {
             Button upBtu = arrayList.get(index - 6);
-            ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
-            if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
-                upBtu.setBackgroundColor(Color.RED);
-                count++;
-            } else {
-                upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
-                count--;
+            if (index - 6 != stone) {
+                ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
+                if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
+                    upBtu.setBackgroundColor(Color.RED);
+                    count++;
+                } else {
+                    upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
+                    count--;
+                }
             }
         }
         //下
         if (index < 21) {
             Button upBtu = arrayList.get(index + 4);
-            ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
-            if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
-                upBtu.setBackgroundColor(Color.RED);
-                count++;
-            } else {
-                upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
-                count--;
+            if (index + 4 != stone) {
+                ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
+                if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
+                    upBtu.setBackgroundColor(Color.RED);
+                    count++;
+                } else {
+                    upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
+                    count--;
+                }
             }
         }
         //右
         if (index % 5 != 0) {
             Button upBtu = arrayList.get(index);
-            ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
-            if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
-                upBtu.setBackgroundColor(Color.RED);
-                count++;
-            } else {
-                upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
-                count--;
+            if (index != stone) {
+                ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
+                if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
+                    upBtu.setBackgroundColor(Color.RED);
+                    count++;
+                } else {
+                    upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
+                    count--;
+                }
             }
         }
         //左
         if (index % 5 != 1) {
             Button upBtu = arrayList.get(index - 2);
-            ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
-            if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
-                upBtu.setBackgroundColor(Color.RED);
-                count++;
-            } else {
-                upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
-                count--;
+            if (index - 2 != stone) {
+                ColorDrawable upColorDrawable = (ColorDrawable) upBtu.getBackground();
+                if (upColorDrawable.getColor() == Color.parseColor("#99cc00")) {
+                    upBtu.setBackgroundColor(Color.RED);
+                    count++;
+                } else {
+                    upBtu.setBackgroundColor(Color.parseColor("#99cc00"));
+                    count--;
+                }
             }
         }
-        if (count == 0) {
+        if (!isCreating && count == 0) {
             dialog.show();
         }
     }

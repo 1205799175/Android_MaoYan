@@ -59,4 +59,7 @@
     <!--地区-->
     <dimen name="area_center_text_size">30sp</dimen>
 
+    <!--button-->
+    <dimen name="cpb_stroke_width">4dp</dimen>
+
 </resources>

@@ -5,17 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
 import com.yangyuning.maoyan.R;
 import com.yangyuning.maoyan.base.AbsBaseFragment;
 import com.yangyuning.maoyan.mine.breakwindow.BreakWindowActivity;
-<<<<<<< HEAD
+import com.yangyuning.maoyan.mine.button.ButtonActivity;
 import com.yangyuning.maoyan.mine.compass.CompassActivity;
 import com.yangyuning.maoyan.mine.deblocking.LockPatternActivity;
-=======
 import com.yangyuning.maoyan.mine.closelight.CloseLightActivity;
->>>>>>> feature/杨宇宁
 import com.yangyuning.maoyan.mine.dialog.DialogOnClickListener;
 import com.yangyuning.maoyan.mine.dialog.DialogOnItemClickListener;
 import com.yangyuning.maoyan.mine.dialog.MDAlertDialog;
@@ -27,6 +27,14 @@ import com.yangyuning.maoyan.mine.order.PayActivity;
 import com.yangyuning.maoyan.mine.refesh.RefeshActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.PlatformDb;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.tencent.qq.QQ;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/10/18.
@@ -39,6 +47,9 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
     private LinearLayout pay;
     private LinearLayout wantWatched, wateced, discuss, topic, noBuy, noDicuss,
             backMoney, collect, vip, bag, money, setting;
+    private LinearLayout login;
+    private CircleImageView iconIv;
+    private TextView nameTv;
 
     private NormalSelectionDialog dialog1;
     private NormalAlertDialog dialog2;
@@ -74,6 +85,9 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
         bag = byView(R.id.mine_bag);
         money = byView(R.id.mine_little_money);
         setting = byView(R.id.mine_setting);
+        login = byView(R.id.mine_login);
+        iconIv = byView(R.id.mine_login_icon);
+        nameTv = byView(R.id.mine_login_name);
 
         pay.setOnClickListener(this);
         wantWatched.setOnClickListener(this);
@@ -88,6 +102,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
         bag.setOnClickListener(this);
         money.setOnClickListener(this);
         setting.setOnClickListener(this);
+        login.setOnClickListener(this);
     }
 
     @Override
@@ -135,15 +150,46 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
             case R.id.mine_vip: //会员中心
                 context.startActivity(new Intent(context, CloseLightActivity.class));
                 break;
-            case R.id.mine_bag: //我的钱包
+            case R.id.mine_bag: //我的钱包(密码锁)
                 Intent wallet = new Intent(context, LockPatternActivity.class);
                 context.startActivity(wallet);
+                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 break;
             case R.id.mine_little_money:    //我的指南针
                 Intent intent = new Intent(context, CompassActivity.class);
                 context.startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                 break;
             case R.id.mine_setting: //设置中心
+                context.startActivity(new Intent(context, ButtonActivity.class));
+                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                break;
+            case R.id.mine_login:
+                //获取第三方平台
+                Platform platform = ShareSDK.getPlatform(context, QQ.NAME);
+                //授权
+                platform.authorize();
+                platform.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        //获取QQ的头像和名字
+                        PlatformDb db = platform.getDb();
+                        String name = db.getUserName();
+                        String icon = db.getUserIcon();
+                        nameTv.setText(name);
+                        Picasso.with(context).load(icon).into(iconIv);
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
                 break;
         }
     }
@@ -178,7 +224,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
     }
 
     //看过    中间显示
-    private void initNormalDialog(){
+    private void initNormalDialog() {
         dialog2 = new NormalAlertDialog.Builder(context)
                 .setHeight(0.23f)  //屏幕高度*0.23
                 .setWidth(0.65f)  //屏幕宽度*0.65
@@ -206,7 +252,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
     }
 
     //影评    中间显示
-    private void initNormalDialog2(){
+    private void initNormalDialog2() {
         dialog3 = new NormalAlertDialog.Builder(context)
                 .setHeight(0.23f)  //屏幕高度*0.23
                 .setWidth(0.65f)  //屏幕宽度*0.65
@@ -250,6 +296,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
                     public void clickLeftButton(View view) {
                         dialog4.dismiss();
                     }
+
                     @Override
                     public void clickRightButton(View view) {
                         dialog4.dismiss();
@@ -259,7 +306,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
     }
 
     //未消费
-    private void initMDMidDialog(){
+    private void initMDMidDialog() {
         final ArrayList<String> s = new ArrayList<>();
         s.add("标为未读");
         s.add("置顶聊天");
@@ -284,7 +331,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
     }
 
     //待评价
-    private void initMDEditDialog(){
+    private void initMDEditDialog() {
         dialog6 = new MDEditDialog.Builder(context)
                 .setTitleVisible(true)
                 .setTitleText("评价")
@@ -308,6 +355,7 @@ public class MineFragment extends AbsBaseFragment implements View.OnClickListene
                         dialog6.dismiss();
                         Toast.makeText(context, editText.trim(), Toast.LENGTH_SHORT).show();
                     }
+
                     @Override
                     public void clickRightButton(View view, String editText) {
                         Toast.makeText(context, editText.trim(), Toast.LENGTH_SHORT).show();
